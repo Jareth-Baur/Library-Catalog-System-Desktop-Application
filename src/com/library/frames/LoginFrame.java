@@ -5,7 +5,7 @@
 package com.library.frames;
 
 import com.library.librarianInterface.LibrarianInterface;
-import com.library.objects.DatabaseAccess;
+import com.library.util.DatabaseAccess;
 import com.library.studentInterface.StudentInterface;
 import java.awt.Color;
 import java.sql.*;

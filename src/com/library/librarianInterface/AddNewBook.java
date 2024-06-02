@@ -1,8 +1,10 @@
 package com.library.librarianInterface;
 
-import com.library.objects.DatabaseAccess;
+import com.library.util.DatabaseAccess;
+import com.library.util.DateParser;
 import java.awt.Color;
 import java.sql.*;
+import java.time.LocalDate;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -12,9 +14,11 @@ import javax.swing.JTextField;
  * @since May 3, 2024
  */
 public class AddNewBook extends javax.swing.JFrame {
+
     private final String sqlUrl = "jdbc:mysql://localhost:3306/library catalog system";
     private final String sqlUsername = "Jareth";
     private final String sqlPassword = "Jareth0223";
+
     /**
      * Creates new form BookFrame
      */
@@ -35,10 +39,10 @@ public class AddNewBook extends javax.swing.JFrame {
         publicationDateField = new javax.swing.JTextField();
         authorField = new javax.swing.JTextField();
         genreField = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Library Catalog System - Add New Book");
-        setPreferredSize(new java.awt.Dimension(490, 320));
 
         rootPanel.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -84,6 +88,7 @@ public class AddNewBook extends javax.swing.JFrame {
 
         bookTitleField.setBorder(javax.swing.BorderFactory.createTitledBorder("Book Title"));
 
+        publicationDateField.setToolTipText("yyyy-mm-dd");
         publicationDateField.setBorder(javax.swing.BorderFactory.createTitledBorder("Publication Date"));
 
         authorField.setBorder(javax.swing.BorderFactory.createTitledBorder("Author"));
@@ -91,12 +96,16 @@ public class AddNewBook extends javax.swing.JFrame {
         genreField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Genre"));
         genreField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Add New Book");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(bookTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,24 +116,30 @@ public class AddNewBook extends javax.swing.JFrame {
                     .addComponent(publicationDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(publicationDateField)
-                    .addComponent(genreField, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout rootPanelLayout = new javax.swing.GroupLayout(rootPanel);
@@ -138,7 +153,7 @@ public class AddNewBook extends javax.swing.JFrame {
         );
         rootPanelLayout.setVerticalGroup(
             rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rootPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -160,7 +175,6 @@ public class AddNewBook extends javax.swing.JFrame {
 
     private void cancelLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelLabelMouseClicked
         this.dispose();
-        new LibrarianInterface().setVisible(true);
     }//GEN-LAST:event_cancelLabelMouseClicked
 
     private void cancelLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelLabelMouseEntered
@@ -185,6 +199,7 @@ public class AddNewBook extends javax.swing.JFrame {
     private javax.swing.JTextField bookTitleField;
     private javax.swing.JLabel cancelLabel;
     private javax.swing.JComboBox<String> genreField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField publicationDateField;
     private javax.swing.JPanel rootPanel;
@@ -209,6 +224,7 @@ public class AddNewBook extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Invalid publication date format. Please use yyyy-mm-dd.", "Error", JOptionPane.ERROR_MESSAGE);
             return b;
         }
+        LocalDate parsedDate = DateParser.parseDate(date);
 
         try {
             // Replace 'url', 'username', and 'password' with your database connection details
@@ -220,7 +236,7 @@ public class AddNewBook extends javax.swing.JFrame {
             // Set the parameters
             preparedStatement.setString(1, title);
             preparedStatement.setString(2, author);
-            preparedStatement.setString(3, date);
+            preparedStatement.setString(3, parsedDate + "");
             preparedStatement.setString(4, genre);
 
             // Execute the INSERT statement
