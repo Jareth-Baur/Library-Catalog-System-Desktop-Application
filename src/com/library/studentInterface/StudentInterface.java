@@ -1589,47 +1589,7 @@ public class StudentInterface extends javax.swing.JFrame {
 
     private void notificationsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_notificationsLabelMouseClicked
         openTab(notificationsTab);
-        try {
-            Connection connection = DriverManager.getConnection(sqlUrl, sqlUsername, sqlPassword);
-            Statement statement = connection.createStatement();
 
-            // Get current date
-            LocalDate currentDate = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String formattedCurrentDate = currentDate.format(formatter);
-
-            // Query for overdue borrows
-            ResultSet overdueResultSet = statement.executeQuery("SELECT * FROM borrows WHERE dueDate < '" + formattedCurrentDate + "' AND returnedDate IS NULL");
-
-            StringBuilder notificationMessage = new StringBuilder();
-            while (overdueResultSet.next()) {
-                String bookID = overdueResultSet.getString("bookID");
-                String dueDate = overdueResultSet.getString("dueDate");
-                notificationMessage.append("Overdue: Book ID ").append(bookID).append(" (Due Date: ").append(dueDate).append(")\n");
-            }
-
-            // Query for due date reminders (one day before)
-            LocalDate reminderDate = currentDate.plusDays(1);
-            String formattedReminderDate = reminderDate.format(formatter);
-            ResultSet reminderResultSet = statement.executeQuery("SELECT * FROM borrows WHERE dueDate = '" + formattedReminderDate + "' AND returnedDate IS NULL");
-
-            while (reminderResultSet.next()) {
-                String bookID = reminderResultSet.getString("bookID");
-                String dueDate = reminderResultSet.getString("dueDate");
-                notificationMessage.append("Reminder: Book ID ").append(bookID).append(" (Due Date: ").append(dueDate).append(")\n");
-            }
-
-            statement.close();
-            connection.close();
-
-            // Display notifications using JOptionPane
-            if (notificationMessage.length() > 0) {
-                JOptionPane.showMessageDialog(null, notificationMessage.toString(), "Notifications", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_notificationsLabelMouseClicked
 
     private void helpAndSupportLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpAndSupportLabelMouseClicked
@@ -1657,7 +1617,7 @@ public class StudentInterface extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             System.out.println("Logging out...");
-            new HomeMenu().setVisible(true);
+            new HomePage().setVisible(true);
             DatabaseAccess.addLog("logout", "security");
             this.dispose();
         } else {
@@ -2057,5 +2017,49 @@ public class StudentInterface extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    private void displayNotifications() {
+        try {
+            Connection connection = DriverManager.getConnection(sqlUrl, sqlUsername, sqlPassword);
+            Statement statement = connection.createStatement();
+
+            // Get current date
+            LocalDate currentDate = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedCurrentDate = currentDate.format(formatter);
+
+            // Query for overdue borrows
+            ResultSet overdueResultSet = statement.executeQuery("SELECT * FROM borrows WHERE dueDate < '" + formattedCurrentDate + "' AND returnedDate IS NULL");
+
+            StringBuilder notificationMessage = new StringBuilder();
+            while (overdueResultSet.next()) {
+                String bookID = overdueResultSet.getString("bookID");
+                String dueDate = overdueResultSet.getString("dueDate");
+                notificationMessage.append("Overdue: Book ID ").append(bookID).append(" (Due Date: ").append(dueDate).append(")\n");
+            }
+
+            // Query for due date reminders (one day before)
+            LocalDate reminderDate = currentDate.plusDays(1);
+            String formattedReminderDate = reminderDate.format(formatter);
+            ResultSet reminderResultSet = statement.executeQuery("SELECT * FROM borrows WHERE dueDate = '" + formattedReminderDate + "' AND returnedDate IS NULL");
+
+            while (reminderResultSet.next()) {
+                String bookID = reminderResultSet.getString("bookID");
+                String dueDate = reminderResultSet.getString("dueDate");
+                notificationMessage.append("Reminder: Book ID ").append(bookID).append(" (Due Date: ").append(dueDate).append(")\n");
+            }
+
+            statement.close();
+            connection.close();
+
+            // Display notifications using JOptionPane
+            if (notificationMessage.length() > 0) {
+                JOptionPane.showMessageDialog(null, notificationMessage.toString(), "Notifications", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Database error: " + e.getMessage());
+        }
     }
 }

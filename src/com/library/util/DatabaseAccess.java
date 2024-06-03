@@ -1,6 +1,7 @@
 package com.library.util;
 
 import com.library.objects.Book;
+import com.library.objects.Student;
 import java.sql.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -499,4 +500,91 @@ public class DatabaseAccess {
         }
     }
 
+    public static void deleteBook(int bookID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            // Establish the connection
+            connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+
+            // SQL query to delete the book
+            String deleteQuery = "DELETE FROM books WHERE bookID = ?";
+            preparedStatement = connection.prepareStatement(deleteQuery);
+
+            // Set the bookID parameter
+            preparedStatement.setInt(1, bookID);
+
+            // Execute the delete operation
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Book deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No book found with the provided bookID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            // Close resources
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
+        }
+    }
+
+    public static Student[] getAllStudents() {
+        List<Student> studentList = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String query = "SELECT * FROM students";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            while (resultSet.next()) {
+                Object[] rowData = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    rowData[i - 1] = resultSet.getObject(i);
+                }
+                Student student = new Student(rowData);
+                studentList.add(student);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
+        }
+
+        return studentList.toArray(Student[]::new);
+    }
 }

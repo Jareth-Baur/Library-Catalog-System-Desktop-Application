@@ -521,10 +521,29 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
     }
 
     private void updateDetails() {
+        // Validate input fields
+        if (firstNameTextField.getText().trim().isEmpty() || middleNameTextField.getText().trim().isEmpty()
+                || lastNameTextField.getText().trim().isEmpty() || usernameTextField.getText().trim().isEmpty()
+                || emailTextField.getText().trim().isEmpty() || phoneNumberTextField.getText().trim().isEmpty()
+                || jobTitleTextField.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "All fields must be filled out.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        // Validate email format (basic validation)
+        if (!emailTextField.getText().contains("@")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
         try {
             String updateQuery = "UPDATE librarians SET fullName = ?, userName = ?, email = ?, phoneNumber = ?, jobTitle = ? WHERE librarianID = ?";
-            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
-            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            preparedStatement = connection.prepareStatement(updateQuery);
             preparedStatement.setString(1, firstNameTextField.getText() + " " + middleNameTextField.getText() + " " + lastNameTextField.getText());
             preparedStatement.setString(2, usernameTextField.getText());
             preparedStatement.setString(3, emailTextField.getText());
@@ -535,19 +554,27 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Profile details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
                 this.dispose();
                 LibrarianInterface.username = usernameTextField.getText();
                 new LibrarianInterface().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Failed to update details.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
-            preparedStatement.close();
-            connection.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.getMessage());
+        } finally {
+            // Close resources
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
         }
     }
 }
