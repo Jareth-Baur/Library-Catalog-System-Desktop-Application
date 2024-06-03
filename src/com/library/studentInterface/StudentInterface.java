@@ -1,5 +1,6 @@
 package com.library.studentInterface;
 
+import com.library.util.DatabaseAccess;
 import com.library.frames.*;
 import com.library.objects.*;
 import com.library.termsAndConditions.*;
