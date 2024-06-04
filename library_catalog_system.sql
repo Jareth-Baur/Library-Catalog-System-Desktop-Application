@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 08:22 AM
+-- Generation Time: Jun 05, 2024 at 12:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -157,7 +157,7 @@ CREATE TABLE `borrows` (
   `borrowDate` varchar(10) NOT NULL,
   `dueDate` varchar(10) NOT NULL,
   `returnedDate` varchar(10) NOT NULL DEFAULT 'null',
-  `status` varchar(10) NOT NULL DEFAULT 'active'
+  `status` varchar(10) NOT NULL DEFAULT 'borrowed'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -165,8 +165,40 @@ CREATE TABLE `borrows` (
 --
 
 INSERT INTO `borrows` (`borrowID`, `studentID`, `bookID`, `borrowDate`, `dueDate`, `returnedDate`, `status`) VALUES
-(1, '2022-6232', '1', '2024-03-24', '2024-03-27', 'null', 'active'),
-(2, '2022-6232', '2', '2024-03-24', '2024-03-23', 'null', 'active');
+(1, '1', '1', '2024-03-24', '2024-03-27', 'null', 'returned'),
+(2, '1', '2', '2024-03-24', '2024-03-23', 'null', 'returned'),
+(5, '17', '80', '2024-06-05', '2024-06-14', '2024-06-05', 'returned'),
+(6, '2', '26', '2024-06-05', '2024-06-19', '2024-06-05', 'returned'),
+(7, '17', '80', '2024-06-05', '2024-06-29', '2024-06-05', 'returned'),
+(8, '2', '26', '2024-06-05', '2024-06-21', '2024-06-05', 'returned'),
+(9, '9', '24', '2024-06-05', '2024-06-28', '2024-06-05', 'returned'),
+(10, '9', '58', '2024-06-05', '2024-07-03', '2024-06-05', 'returned'),
+(11, '17', '82', '2024-06-05', '2024-07-02', '', 'returned'),
+(12, '5', '55', '2024-06-05', '2024-06-06', '2024-06-05', 'returned'),
+(13, '14', '72', '2024-06-05', '2024-06-27', '2024-06-05', 'returned'),
+(14, '12', '71', '2024-06-05', '2024-06-08', '2024-06-05', 'returned'),
+(15, '2', '63', '2024-06-05', '2024-06-27', '', 'returned'),
+(16, '6', '94', '2024-06-05', '2024-06-28', '', 'returned'),
+(17, '11', '68', '2024-06-05', '2024-06-14', '2024-06-05', 'returned'),
+(18, '5', '69', '2024-06-05', '2024-06-09', '2024-06-05', 'returned'),
+(19, '2', '5', '2024-06-05', '2024-07-04', '', 'returned'),
+(20, '16', '13', '2024-06-05', '2024-06-15', '', 'returned'),
+(21, '18', '29', '2024-06-05', '2024-06-23', '2024-06-05', 'returned'),
+(22, '13', '31', '2024-06-05', '2024-06-18', '2024-06-05', 'returned'),
+(23, '5', '50', '2024-06-05', '2024-06-14', '2024-06-05', 'returned'),
+(24, '15', '84', '2024-06-05', '2024-06-09', '', 'returned'),
+(25, '7', '33', '2024-06-05', '2024-06-20', '', 'returned'),
+(26, '6', '25', '2024-06-05', '2024-06-15', '2024-06-05', 'returned'),
+(27, '4', '67', '2024-06-05', '2024-06-27', '', 'returned'),
+(28, '6', '96', '2024-06-05', '2024-07-04', '', 'returned'),
+(29, '14', '39', '2024-06-05', '2024-06-27', '', 'returned'),
+(30, '10', '93', '2024-06-05', '2024-07-03', '2024-06-05', 'returned'),
+(31, '4', '16', '2024-06-05', '2024-06-29', '', 'returned'),
+(32, '1', '92', '2024-06-05', '2024-06-17', '2024-06-05', 'returned'),
+(33, '18', '61', '2024-06-05', '2024-07-04', '', 'returned'),
+(34, '11', '15', '2024-06-05', '2024-06-13', '2024-06-05', 'returned'),
+(35, '15', '23', '2024-06-05', '2024-06-06', '', 'returned'),
+(36, '19', '18', '2024-06-05', '2024-06-09', '2024-06-05', 'returned');
 
 -- --------------------------------------------------------
 
@@ -180,7 +212,7 @@ CREATE TABLE `librarians` (
   `userName` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `phoneNumber` int(11) NOT NULL,
+  `phoneNumber` varchar(11) NOT NULL,
   `jobTitle` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -189,7 +221,7 @@ CREATE TABLE `librarians` (
 --
 
 INSERT INTO `librarians` (`librarianID`, `fullName`, `userName`, `email`, `password`, `phoneNumber`, `jobTitle`) VALUES
-(2, 'first name middle', 'admin', 'admin@gmail.com', '$2a$12$a8FL6L80FRyXgN3wohN1vOzV/DQbImmo.AV3nC.lGseALZfEyMZr2', 987654321, 'administrator');
+(2, 'first name middle', 'admin', 'admin@gmail.com', '$2a$12$a8FL6L80FRyXgN3wohN1vOzV/DQbImmo.AV3nC.lGseALZfEyMZr2', '987654321', 'administrator');
 
 -- --------------------------------------------------------
 
@@ -313,7 +345,22 @@ INSERT INTO `transactions` (`transactionID`, `bookID`, `studentID`, `transaction
 (27, 61, 18, 'loan', '2024-06-04'),
 (28, 15, 11, 'loan', '2024-06-04'),
 (29, 23, 15, 'loan', '2024-06-04'),
-(30, 18, 19, 'loan', '2024-06-04');
+(30, 18, 19, 'loan', '2024-06-04'),
+(31, 1, 1, 'return', '2024-06-05'),
+(32, 2, 1, 'return', '2024-06-05'),
+(33, 82, 17, 'return', '2024-06-05'),
+(34, 63, 2, 'return', '2024-06-05'),
+(35, 94, 6, 'return', '2024-06-05'),
+(36, 5, 2, 'return', '2024-06-05'),
+(37, 13, 16, 'return', '2024-06-05'),
+(38, 84, 15, 'return', '2024-06-05'),
+(39, 33, 7, 'return', '2024-06-05'),
+(40, 67, 4, 'return', '2024-06-05'),
+(41, 96, 6, 'return', '2024-06-05'),
+(42, 39, 14, 'return', '2024-06-05'),
+(43, 16, 4, 'return', '2024-06-05'),
+(44, 61, 18, 'return', '2024-06-05'),
+(45, 23, 15, 'return', '2024-06-05');
 
 --
 -- Indexes for dumped tables
@@ -369,13 +416,13 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `borrows`
 --
 ALTER TABLE `borrows`
-  MODIFY `borrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `borrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `librarians`
 --
 ALTER TABLE `librarians`
-  MODIFY `librarianID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `librarianID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -393,7 +440,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `transactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
