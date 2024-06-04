@@ -106,7 +106,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         genres = new javax.swing.JComboBox<>();
         booksTableScrollPane = new javax.swing.JScrollPane();
         booksTable = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        bookDetailsMiniPanel = new javax.swing.JPanel();
         bookTitleField = new javax.swing.JTextField();
         genreField = new javax.swing.JTextField();
         publicationField = new javax.swing.JTextField();
@@ -118,6 +118,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
         studentsTableScrollPane = new javax.swing.JScrollPane();
         studentsTable = new javax.swing.JTable();
         viewStudentsLabel = new javax.swing.JLabel();
+        studentDetailsMiniPanel = new javax.swing.JPanel();
+        studentIDField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        courseField = new javax.swing.JTextField();
+        usernameField = new javax.swing.JTextField();
+        addressField = new javax.swing.JTextField();
+        studentFullNameField = new javax.swing.JTextField();
+        deleteStudentButton = new javax.swing.JLabel();
         loanManagementPanel = new javax.swing.JPanel();
         loanManagementTitlePanel = new javax.swing.JPanel();
         loanManagementTitleLabel = new javax.swing.JLabel();
@@ -793,8 +801,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         booksTableScrollPane.setViewportView(booksTable);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Book Deatils"));
+        bookDetailsMiniPanel.setBackground(new java.awt.Color(153, 153, 255));
+        bookDetailsMiniPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Book Deatils"));
 
         bookTitleField.setBorder(javax.swing.BorderFactory.createTitledBorder("Book Title"));
 
@@ -804,32 +812,32 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         authorField.setBorder(javax.swing.BorderFactory.createTitledBorder("Author"));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout bookDetailsMiniPanelLayout = new javax.swing.GroupLayout(bookDetailsMiniPanel);
+        bookDetailsMiniPanel.setLayout(bookDetailsMiniPanelLayout);
+        bookDetailsMiniPanelLayout.setHorizontalGroup(
+            bookDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bookDetailsMiniPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(bookDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bookDetailsMiniPanelLayout.createSequentialGroup()
                         .addComponent(bookTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(bookDetailsMiniPanelLayout.createSequentialGroup()
                         .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(publicationField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        bookDetailsMiniPanelLayout.setVerticalGroup(
+            bookDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bookDetailsMiniPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bookDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bookDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(publicationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -856,7 +864,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                                 .addComponent(editBookLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(viewBooksLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(bookDetailsMiniPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         catalogAdminBodyPanelLayout.setVerticalGroup(
@@ -876,7 +884,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                                 .addComponent(genres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31))
                             .addComponent(viewBooksLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bookDetailsMiniPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(booksTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -962,6 +970,69 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
+        studentDetailsMiniPanel.setBackground(new java.awt.Color(153, 153, 255));
+        studentDetailsMiniPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Student Details"));
+
+        studentIDField.setBorder(javax.swing.BorderFactory.createTitledBorder("Student ID"));
+
+        emailField.setBorder(javax.swing.BorderFactory.createTitledBorder("Email"));
+
+        courseField.setBorder(javax.swing.BorderFactory.createTitledBorder("Course"));
+
+        usernameField.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
+
+        addressField.setBorder(javax.swing.BorderFactory.createTitledBorder("Address"));
+
+        studentFullNameField.setBorder(javax.swing.BorderFactory.createTitledBorder("Full Name"));
+
+        javax.swing.GroupLayout studentDetailsMiniPanelLayout = new javax.swing.GroupLayout(studentDetailsMiniPanel);
+        studentDetailsMiniPanel.setLayout(studentDetailsMiniPanelLayout);
+        studentDetailsMiniPanelLayout.setHorizontalGroup(
+            studentDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentDetailsMiniPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(studentDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(studentIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(studentDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(studentDetailsMiniPanelLayout.createSequentialGroup()
+                        .addComponent(studentFullNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(emailField))
+                    .addGroup(studentDetailsMiniPanelLayout.createSequentialGroup()
+                        .addComponent(courseField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addressField)))
+                .addContainerGap())
+        );
+        studentDetailsMiniPanelLayout.setVerticalGroup(
+            studentDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentDetailsMiniPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(studentDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(studentIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentFullNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(studentDetailsMiniPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        deleteStudentButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteStudentButton.setText("Delete Student");
+        deleteStudentButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteStudentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteStudentButton.setPreferredSize(new java.awt.Dimension(45, 27));
+        deleteStudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteStudentButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout userAdminBodyPanelLayout = new javax.swing.GroupLayout(userAdminBodyPanel);
         userAdminBodyPanel.setLayout(userAdminBodyPanelLayout);
         userAdminBodyPanelLayout.setHorizontalGroup(
@@ -971,15 +1042,25 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addGroup(userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(studentsTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                     .addGroup(userAdminBodyPanelLayout.createSequentialGroup()
-                        .addComponent(viewStudentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(viewStudentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(studentDetailsMiniPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         userAdminBodyPanelLayout.setVerticalGroup(
             userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userAdminBodyPanelLayout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
-                .addComponent(viewStudentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(userAdminBodyPanelLayout.createSequentialGroup()
+                        .addComponent(deleteStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewStudentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(userAdminBodyPanelLayout.createSequentialGroup()
+                        .addComponent(studentDetailsMiniPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentsTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1409,7 +1490,32 @@ public class LibrarianInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_booksTableMouseClicked
 
     private void studentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTableMouseClicked
-        // TODO add your handling code here:
+        int selectedRow = studentsTable.getSelectedRow();
+        if (selectedRow != -1) { // Check if a row is selected
+            // Retrieve data from the selected row with null checks
+            Object studentIDObj = studentsTable.getValueAt(selectedRow, 0);
+            Object fullNameObj = studentsTable.getValueAt(selectedRow, 1);
+            Object usernameObj = studentsTable.getValueAt(selectedRow, 2);
+            Object emailObj = studentsTable.getValueAt(selectedRow, 3);
+            Object addressObj = studentsTable.getValueAt(selectedRow, 4);
+            Object courseObj = studentsTable.getValueAt(selectedRow, 5);
+
+            // Check if objects are not null and convert to appropriate types
+            String studentID = studentIDObj != null ? studentIDObj.toString() : "";
+            String fullName = fullNameObj != null ? fullNameObj.toString() : "";
+            String username = usernameObj != null ? usernameObj.toString() : "";
+            String email = emailObj != null ? emailObj.toString() : "";
+            String address = addressObj != null ? addressObj.toString() : "";
+            String course = courseObj != null ? courseObj.toString() : "";
+
+            // Set the retrieved data to the corresponding fields
+            studentIDField.setText(studentID);
+            studentFullNameField.setText(fullName);
+            usernameField.setText(username);
+            emailField.setText(email);
+            addressField.setText(address);
+            courseField.setText(course);
+        }
     }//GEN-LAST:event_studentsTableMouseClicked
 
     private void moreDetailsLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moreDetailsLabel1MouseClicked
@@ -1451,11 +1557,40 @@ public class LibrarianInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_viewStudentsLabelMouseClicked
 
+    private void deleteStudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteStudentButtonMouseClicked
+        // Retrieve the student ID from the input field
+        String studentIDText = studentIDField.getText();
+
+        // Check if the input is empty
+        if (studentIDText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Student ID field cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Parse the student ID to an integer
+            int studentID = Integer.parseInt(studentIDText);
+
+            // Show a confirmation dialog
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the student with ID " + studentID + "?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+            // If the user confirms, proceed with the deletion
+            if (confirmation == JOptionPane.YES_OPTION) {
+                DatabaseAccess.deleteStudent(studentID);
+            }
+        } catch (NumberFormatException e) {
+            // Handle invalid student ID format
+            JOptionPane.showMessageDialog(null, "Invalid student ID format. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteStudentButtonMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activeLoansCount;
     private javax.swing.JLabel activeLoansLabel;
     private javax.swing.JLabel addBookLabel;
+    private javax.swing.JTextField addressField;
     private javax.swing.JTextField authorField;
+    private javax.swing.JPanel bookDetailsMiniPanel;
     private javax.swing.JTextField bookTitleField;
     private javax.swing.JTable booksTable;
     private javax.swing.JScrollPane booksTableScrollPane;
@@ -1464,12 +1599,15 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel catalogAdminPanel;
     private javax.swing.JLabel catalogAdminTitleLabel;
     private javax.swing.JPanel catalogAdminTitlePanel;
+    private javax.swing.JTextField courseField;
     private javax.swing.JPanel dashBoardBodyPanel;
     private javax.swing.JLabel dashBoardLabel;
     private javax.swing.JPanel dashBoardPanel;
     private javax.swing.JLabel deleteBookLabel;
+    private javax.swing.JLabel deleteStudentButton;
     private javax.swing.JLabel editBookLabel;
     private javax.swing.JLabel editProfileDetailsLabel;
+    private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel fullNameLabel;
     private javax.swing.JTextField genreField;
@@ -1479,7 +1617,6 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel helpAndSupportPanel;
     private javax.swing.JPanel helpAndSupportTitlePanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jobTitleLabel;
     private javax.swing.JPanel librarianTabPanel;
     private javax.swing.JPanel loanManagementBodyPanel;
@@ -1527,6 +1664,9 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JLabel settingsLabel;
     private javax.swing.JPanel settingsPanel;
     private javax.swing.JPanel settingsTitlePanel;
+    private javax.swing.JPanel studentDetailsMiniPanel;
+    private javax.swing.JTextField studentFullNameField;
+    private javax.swing.JTextField studentIDField;
     private javax.swing.JTable studentsTable;
     private javax.swing.JScrollPane studentsTableScrollPane;
     private javax.swing.JPanel subOverviewReportPanel;
@@ -1537,6 +1677,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel userAdminPanel;
     private javax.swing.JLabel userAdminTitleLabel;
     private javax.swing.JPanel userAdminTitlePanel;
+    private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel viewBooksLabel;
     private javax.swing.JLabel viewStudentsLabel;
@@ -1595,7 +1736,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
     // Set color effect on buttons uppon hover on panel sections
     private void dashBoardHover() {
-        JLabel[] labels = {moreDetailsLabel1, moreDetailsLabel2, moreDetailsLabel3, moreDetailsLabel4, editProfileDetailsLabel, viewTermAndConditionsLabel, addBookLabel, editBookLabel, deleteBookLabel, viewBooksLabel};
+        JLabel[] labels = {moreDetailsLabel1, moreDetailsLabel2, moreDetailsLabel3, moreDetailsLabel4, editProfileDetailsLabel, viewTermAndConditionsLabel, addBookLabel, editBookLabel, deleteBookLabel, viewBooksLabel, deleteStudentButton, viewStudentsLabel};
         for (JLabel label : labels) {
             label.setOpaque(true);
             label.setBackground(new Color(153, 153, 255));

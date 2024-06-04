@@ -587,4 +587,24 @@ public class DatabaseAccess {
 
         return studentList.toArray(Student[]::new);
     }
+
+    public static void deleteStudent(int studentID) {
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String deleteQuery = "DELETE FROM students WHERE studentID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+            preparedStatement.setInt(1, studentID);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Student with ID " + studentID + " deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No student found with ID " + studentID + ".", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }
