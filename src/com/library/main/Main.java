@@ -1,16 +1,16 @@
 package com.library.main;
 
 import com.library.frames.HomePage;
-//import com.library.frames.RegisterLibrarian;
-//import com.library.frames.LoginFrame;
-//import com.library.frames.RegisterStudent;
-//import com.library.librarianInterface.AddNewBook;
-//import com.library.librarianInterface.EditBookDetails;
-//import com.library.librarianInterface.EditLibrarianProfileDetails;
-//import com.library.librarianInterface.LibrarianInterface;
-//import com.library.studentInterface.EditProfileDetails;
-//import com.library.studentInterface.LoanBook;
-//import com.library.studentInterface.StudentInterface;
+import com.library.frames.RegisterLibrarian;
+import com.library.frames.LoginFrame;
+import com.library.frames.RegisterStudent;
+import com.library.librarianInterface.AddNewBook;
+import com.library.librarianInterface.EditBookDetails;
+import com.library.librarianInterface.EditLibrarianProfileDetails;
+import com.library.librarianInterface.LibrarianInterface;
+import com.library.studentInterface.EditProfileDetails;
+import com.library.studentInterface.LoanBook;
+import com.library.studentInterface.StudentInterface;
 
 /**
  * @author Jareth Bayron Baur
@@ -33,6 +33,5 @@ public class Main {
         //new EditLibrarianProfileDetails("2").setVisible(true);
         //new AddNewBook().setVisible(true);
         //new EditBookDetails("101").setVisible(true);
-
     }
 }

@@ -107,7 +107,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         viewBooksLabel = new javax.swing.JLabel();
         genres = new javax.swing.JComboBox<>();
         booksTableScrollPane = new javax.swing.JScrollPane();
-        booksTable = new javax.swing.JTable();
+        booksTable = new com.library.custom.DarkTable();
         bookDetailsMiniPanel = new javax.swing.JPanel();
         bookTitleField = new javax.swing.JTextField();
         genreField = new javax.swing.JTextField();
@@ -118,7 +118,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         userAdminTitleLabel = new javax.swing.JLabel();
         userAdminBodyPanel = new javax.swing.JPanel();
         studentsTableScrollPane = new javax.swing.JScrollPane();
-        studentsTable = new javax.swing.JTable();
+        studentsTable = new com.library.custom.DarkTable();
         viewStudentsLabel = new javax.swing.JLabel();
         studentDetailsMiniPanel = new javax.swing.JPanel();
         studentIDField = new javax.swing.JTextField();
@@ -135,7 +135,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         loanManagementTabbedPane = new javax.swing.JTabbedPane();
         borrowManagementPanel = new javax.swing.JPanel();
         borrowsScrollPane = new javax.swing.JScrollPane();
-        borrowsTable = new javax.swing.JTable();
+        borrowsTable = new com.library.custom.DarkTable();
         viewBorrowsButton = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         borrowTextArea = new javax.swing.JTextArea();
@@ -145,7 +145,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         borrowBookDetailsTextArea = new javax.swing.JTextArea();
         transactionMangementPanel = new javax.swing.JPanel();
         transactionsScrollPane = new javax.swing.JScrollPane();
-        transactionsTable = new javax.swing.JTable();
+        transactionsTable = new com.library.custom.DarkTable();
         viewTransactionsButton = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         transactionsTextArea = new javax.swing.JTextArea();
@@ -175,13 +175,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
         rootPanel.setPreferredSize(new java.awt.Dimension(845, 490));
         rootPanel.setLayout(new java.awt.BorderLayout());
 
-        westNavPanel.setBackground(new java.awt.Color(255, 153, 153));
+        westNavPanel.setBackground(new java.awt.Color(0, 0, 0));
         westNavPanel.setPreferredSize(new java.awt.Dimension(175, 448));
 
-        myAccountPanel.setBackground(new java.awt.Color(255, 204, 204));
+        myAccountPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         dashBoardLabel.setBackground(new java.awt.Color(102, 102, 102));
         dashBoardLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        dashBoardLabel.setForeground(new java.awt.Color(255, 255, 255));
         dashBoardLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dashBoardLabel.setText("Dash Board");
         dashBoardLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -210,9 +211,10 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        myAccountSubLabel.setBackground(new java.awt.Color(255, 204, 204));
+        myAccountSubLabel.setBackground(new java.awt.Color(51, 51, 51));
 
         profileInformationLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        profileInformationLabel.setForeground(new java.awt.Color(255, 255, 255));
         profileInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profileInformationLabel.setText("Profile Information");
         profileInformationLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -225,6 +227,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         catalogAdminLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        catalogAdminLabel.setForeground(new java.awt.Color(255, 255, 255));
         catalogAdminLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         catalogAdminLabel.setText("Catalog Admin");
         catalogAdminLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -237,6 +240,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         userAdminLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        userAdminLabel.setForeground(new java.awt.Color(255, 255, 255));
         userAdminLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userAdminLabel.setText("User Admin");
         userAdminLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -250,6 +254,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         loanManagementLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        loanManagementLabel.setForeground(new java.awt.Color(255, 255, 255));
         loanManagementLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loanManagementLabel.setText("Loan Management");
         loanManagementLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -262,6 +267,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         settingsLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        settingsLabel.setForeground(new java.awt.Color(255, 255, 255));
         settingsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         settingsLabel.setText("Settings");
         settingsLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -274,6 +280,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         notificationsLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        notificationsLabel.setForeground(new java.awt.Color(255, 255, 255));
         notificationsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         notificationsLabel.setText("Notifications");
         notificationsLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -286,6 +293,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         helpAndSupportLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        helpAndSupportLabel.setForeground(new java.awt.Color(255, 255, 255));
         helpAndSupportLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         helpAndSupportLabel.setText("Help & Support");
         helpAndSupportLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -298,6 +306,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
 
         logOutLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        logOutLabel.setForeground(new java.awt.Color(255, 255, 255));
         logOutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logOutLabel.setText("Log Out");
         logOutLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -391,49 +400,57 @@ public class LibrarianInterface extends javax.swing.JFrame {
         librarianTabPanel.setPreferredSize(new java.awt.Dimension(671, 488));
         librarianTabPanel.setLayout(new java.awt.CardLayout());
 
-        dashBoardPanel.setBackground(new java.awt.Color(255, 204, 204));
+        dashBoardPanel.setBackground(new java.awt.Color(34, 42, 44));
         dashBoardPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        dashBoardBodyPanel.setBackground(new java.awt.Color(255, 153, 153));
+        dashBoardBodyPanel.setBackground(new java.awt.Color(0, 0, 0));
 
-        overviewReportPanel.setBackground(new java.awt.Color(153, 153, 255));
+        overviewReportPanel.setBackground(new java.awt.Color(51, 51, 51));
         overviewReportPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         overviewReportPanel.setMinimumSize(new java.awt.Dimension(570, 182));
         overviewReportPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         overViewStatisticsTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        overViewStatisticsTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         overViewStatisticsTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         overViewStatisticsTitleLabel.setText("Overview Report");
         overviewReportPanel.add(overViewStatisticsTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 588, -1));
 
+        numberOfBooksLabel.setForeground(new java.awt.Color(240, 240, 240));
         numberOfBooksLabel.setText("Total Books");
         overviewReportPanel.add(numberOfBooksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         numberOfBooksCount.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        numberOfBooksCount.setForeground(new java.awt.Color(240, 240, 240));
         numberOfBooksCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numberOfBooksCount.setText("0");
         numberOfBooksCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         overviewReportPanel.add(numberOfBooksCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 60, 60));
 
         activeLoansCount.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        activeLoansCount.setForeground(new java.awt.Color(240, 240, 240));
         activeLoansCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         activeLoansCount.setText("0");
         activeLoansCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         overviewReportPanel.add(activeLoansCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 60, 60));
 
+        activeLoansLabel.setForeground(new java.awt.Color(240, 240, 240));
         activeLoansLabel.setText("Total Loans");
         overviewReportPanel.add(activeLoansLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
         overdueBooksCount.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        overdueBooksCount.setForeground(new java.awt.Color(240, 240, 240));
         overdueBooksCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         overdueBooksCount.setText("0");
         overdueBooksCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         overviewReportPanel.add(overdueBooksCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 60, 60));
 
+        overdueBooksLabel.setForeground(new java.awt.Color(240, 240, 240));
         overdueBooksLabel.setText("Overdue Books");
         overviewReportPanel.add(overdueBooksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
 
-        moreDetailsLabel3.setBackground(new java.awt.Color(153, 153, 255));
+        moreDetailsLabel3.setBackground(new java.awt.Color(51, 51, 51));
+        moreDetailsLabel3.setForeground(new java.awt.Color(255, 255, 255));
         moreDetailsLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moreDetailsLabel3.setText("More Details");
         moreDetailsLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.gray));
@@ -447,7 +464,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         overviewReportPanel.add(moreDetailsLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 100, -1));
 
-        moreDetailsLabel1.setBackground(new java.awt.Color(153, 153, 255));
+        moreDetailsLabel1.setBackground(new java.awt.Color(51, 51, 51));
+        moreDetailsLabel1.setForeground(new java.awt.Color(255, 255, 255));
         moreDetailsLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moreDetailsLabel1.setText("More Details");
         moreDetailsLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.gray));
@@ -461,7 +479,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         overviewReportPanel.add(moreDetailsLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 100, -1));
 
-        moreDetailsLabel2.setBackground(new java.awt.Color(153, 153, 255));
+        moreDetailsLabel2.setBackground(new java.awt.Color(51, 51, 51));
+        moreDetailsLabel2.setForeground(new java.awt.Color(255, 255, 255));
         moreDetailsLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moreDetailsLabel2.setText("More Details");
         moreDetailsLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.gray));
@@ -475,16 +494,19 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         overviewReportPanel.add(moreDetailsLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 100, -1));
 
+        totalStudentsLabel.setForeground(new java.awt.Color(240, 240, 240));
         totalStudentsLabel.setText("Total Students");
         overviewReportPanel.add(totalStudentsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
 
         totalStudentCount.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        totalStudentCount.setForeground(new java.awt.Color(240, 240, 240));
         totalStudentCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalStudentCount.setText("0");
         totalStudentCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         overviewReportPanel.add(totalStudentCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 60, 60));
 
-        moreDetailsLabel4.setBackground(new java.awt.Color(153, 153, 255));
+        moreDetailsLabel4.setBackground(new java.awt.Color(51, 51, 51));
+        moreDetailsLabel4.setForeground(new java.awt.Color(255, 255, 255));
         moreDetailsLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moreDetailsLabel4.setText("More Details");
         moreDetailsLabel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.gray));
@@ -498,19 +520,22 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         overviewReportPanel.add(moreDetailsLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 100, -1));
 
-        subOverviewReportPanel.setBackground(new java.awt.Color(255, 204, 204));
+        subOverviewReportPanel.setBackground(new java.awt.Color(51, 51, 51));
         subOverviewReportPanel.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-        mostUsedBooksPanel.setBackground(new java.awt.Color(153, 204, 255));
-        mostUsedBooksPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Most Used Book"));
+        mostUsedBooksPanel.setBackground(new java.awt.Color(51, 51, 51));
+        mostUsedBooksPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "Most Used Book", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         mosedUsedBookTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mosedUsedBookTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         mosedUsedBookTitleLabel.setText("Title:");
 
         mostUsedBookAuthorLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mostUsedBookAuthorLabel.setForeground(new java.awt.Color(255, 255, 255));
         mostUsedBookAuthorLabel.setText("Author:");
 
         mosedUsedBookGenreLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mosedUsedBookGenreLabel.setForeground(new java.awt.Color(255, 255, 255));
         mosedUsedBookGenreLabel.setText("Genre:");
 
         javax.swing.GroupLayout mostUsedBooksPanelLayout = new javax.swing.GroupLayout(mostUsedBooksPanel);
@@ -539,16 +564,19 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         subOverviewReportPanel.add(mostUsedBooksPanel);
 
-        recentTransactionsPanel.setBackground(new java.awt.Color(204, 153, 255));
-        recentTransactionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Recent Transactions"));
+        recentTransactionsPanel.setBackground(new java.awt.Color(51, 51, 51));
+        recentTransactionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "Recent Transactions", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         recentTransactionsTransactTypeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        recentTransactionsTransactTypeLabel.setForeground(new java.awt.Color(255, 255, 255));
         recentTransactionsTransactTypeLabel.setText("Transaction Type:");
 
         recentTransactionsBookTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        recentTransactionsBookTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         recentTransactionsBookTitleLabel.setText("Book Title:");
 
         recentTransactionsUserLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        recentTransactionsUserLabel.setForeground(new java.awt.Color(255, 255, 255));
         recentTransactionsUserLabel.setText("User:");
 
         javax.swing.GroupLayout recentTransactionsPanelLayout = new javax.swing.GroupLayout(recentTransactionsPanel);
@@ -619,12 +647,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(dashBoardPanel, "card2");
 
-        profileInformationPanel.setBackground(new java.awt.Color(255, 204, 204));
+        profileInformationPanel.setBackground(new java.awt.Color(34, 42, 44));
         profileInformationPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        profileTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        profileTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         profileTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        profileTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         profileTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profileTitleLabel.setText("Profile Information");
 
@@ -645,18 +674,24 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        profileDetailsPanel.setBackground(new java.awt.Color(153, 153, 255));
+        profileDetailsPanel.setBackground(new java.awt.Color(51, 51, 51));
 
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username:");
 
+        emailLabel.setForeground(new java.awt.Color(255, 255, 255));
         emailLabel.setText("Email:");
 
+        phoneNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         phoneNumberLabel.setText("Phone Number:");
 
+        jobTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         jobTitleLabel.setText("Job Title:");
 
+        fullNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         fullNameLabel.setText("Full Name:");
 
+        editProfileDetailsLabel.setForeground(new java.awt.Color(255, 255, 255));
         editProfileDetailsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editProfileDetailsLabel.setText("Edit Details");
         editProfileDetailsLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -728,12 +763,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(profileInformationPanel, "card3");
 
-        catalogAdminPanel.setBackground(new java.awt.Color(255, 204, 204));
+        catalogAdminPanel.setBackground(new java.awt.Color(34, 42, 44));
         catalogAdminPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        catalogAdminTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        catalogAdminTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         catalogAdminTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        catalogAdminTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         catalogAdminTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         catalogAdminTitleLabel.setText("Catalog Admin");
 
@@ -754,8 +790,9 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        catalogAdminBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
+        catalogAdminBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
 
+        addBookLabel.setForeground(new java.awt.Color(255, 255, 255));
         addBookLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addBookLabel.setText("Add New Book");
         addBookLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -767,6 +804,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
+        editBookLabel.setForeground(new java.awt.Color(255, 255, 255));
         editBookLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editBookLabel.setText("Edit Book");
         editBookLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -778,6 +816,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
+        deleteBookLabel.setForeground(new java.awt.Color(255, 255, 255));
         deleteBookLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deleteBookLabel.setText("Delete");
         deleteBookLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -789,6 +828,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
+        viewBooksLabel.setForeground(new java.awt.Color(255, 255, 255));
         viewBooksLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewBooksLabel.setText("View Books");
         viewBooksLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -800,11 +840,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
-        genres.setBackground(new java.awt.Color(153, 153, 255));
+        genres.setBackground(new java.awt.Color(51, 51, 51));
+        genres.setForeground(new java.awt.Color(255, 255, 255));
         genres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        genres.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Genre"));
+        genres.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Genre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         genres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         genres.setOpaque(false);
+
+        booksTableScrollPane.setBackground(new java.awt.Color(51, 51, 51));
 
         booksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -824,8 +867,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         booksTableScrollPane.setViewportView(booksTable);
 
-        bookDetailsMiniPanel.setBackground(new java.awt.Color(153, 153, 255));
-        bookDetailsMiniPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Book Deatils"));
+        bookDetailsMiniPanel.setBackground(new java.awt.Color(51, 51, 51));
+        bookDetailsMiniPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Book Deatils", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         bookTitleField.setBorder(javax.swing.BorderFactory.createTitledBorder("Book Title"));
 
@@ -936,12 +979,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(catalogAdminPanel, "card4");
 
-        userAdminPanel.setBackground(new java.awt.Color(255, 204, 204));
+        userAdminPanel.setBackground(new java.awt.Color(34, 42, 44));
         userAdminPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        userAdminTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        userAdminTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         userAdminTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        userAdminTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         userAdminTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userAdminTitleLabel.setText("User Admin");
 
@@ -962,7 +1006,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        userAdminBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
+        userAdminBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         studentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -982,6 +1026,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         studentsTableScrollPane.setViewportView(studentsTable);
 
+        viewStudentsLabel.setForeground(new java.awt.Color(255, 255, 255));
         viewStudentsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewStudentsLabel.setText("View Students");
         viewStudentsLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -993,8 +1038,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
-        studentDetailsMiniPanel.setBackground(new java.awt.Color(153, 153, 255));
-        studentDetailsMiniPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Student Details"));
+        studentDetailsMiniPanel.setBackground(new java.awt.Color(51, 51, 51));
+        studentDetailsMiniPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Student Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         studentIDField.setBorder(javax.swing.BorderFactory.createTitledBorder("Student ID"));
 
@@ -1045,6 +1090,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        deleteStudentButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteStudentButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deleteStudentButton.setText("Delete Student");
         deleteStudentButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1111,12 +1157,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(userAdminPanel, "card5");
 
-        loanManagementPanel.setBackground(new java.awt.Color(255, 204, 204));
+        loanManagementPanel.setBackground(new java.awt.Color(34, 42, 44));
         loanManagementPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        loanManagementTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        loanManagementTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         loanManagementTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        loanManagementTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         loanManagementTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loanManagementTitleLabel.setText("Loan Management");
 
@@ -1137,11 +1184,12 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        loanManagementBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
+        loanManagementBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
 
-        loanManagementTabbedPane.setBackground(new java.awt.Color(153, 153, 255));
+        loanManagementTabbedPane.setBackground(new java.awt.Color(51, 51, 51));
+        loanManagementTabbedPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        borrowManagementPanel.setBackground(new java.awt.Color(153, 153, 255));
+        borrowManagementPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         borrowsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1161,6 +1209,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         borrowsScrollPane.setViewportView(borrowsTable);
 
+        viewBorrowsButton.setBackground(new java.awt.Color(51, 51, 51));
+        viewBorrowsButton.setForeground(new java.awt.Color(255, 255, 255));
         viewBorrowsButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewBorrowsButton.setText("View Borrows");
         viewBorrowsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1172,18 +1222,21 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
-        borrowTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        borrowTextArea.setBackground(new java.awt.Color(51, 51, 51));
         borrowTextArea.setColumns(20);
+        borrowTextArea.setForeground(new java.awt.Color(255, 255, 255));
         borrowTextArea.setRows(5);
         jScrollPane3.setViewportView(borrowTextArea);
 
-        borrowStudentDetailsTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        borrowStudentDetailsTextArea.setBackground(new java.awt.Color(51, 51, 51));
         borrowStudentDetailsTextArea.setColumns(20);
+        borrowStudentDetailsTextArea.setForeground(new java.awt.Color(255, 255, 255));
         borrowStudentDetailsTextArea.setRows(5);
         jScrollPane5.setViewportView(borrowStudentDetailsTextArea);
 
-        borrowBookDetailsTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        borrowBookDetailsTextArea.setBackground(new java.awt.Color(51, 51, 51));
         borrowBookDetailsTextArea.setColumns(20);
+        borrowBookDetailsTextArea.setForeground(new java.awt.Color(255, 255, 255));
         borrowBookDetailsTextArea.setRows(5);
         jScrollPane6.setViewportView(borrowBookDetailsTextArea);
 
@@ -1222,7 +1275,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         loanManagementTabbedPane.addTab("Borrow Management", borrowManagementPanel);
 
-        transactionMangementPanel.setBackground(new java.awt.Color(153, 153, 255));
+        transactionMangementPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         transactionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1242,6 +1295,8 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         transactionsScrollPane.setViewportView(transactionsTable);
 
+        viewTransactionsButton.setBackground(new java.awt.Color(51, 51, 51));
+        viewTransactionsButton.setForeground(new java.awt.Color(255, 255, 255));
         viewTransactionsButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTransactionsButton.setText("View Transactions");
         viewTransactionsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1253,18 +1308,21 @@ public class LibrarianInterface extends javax.swing.JFrame {
             }
         });
 
-        transactionsTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        transactionsTextArea.setBackground(new java.awt.Color(51, 51, 51));
         transactionsTextArea.setColumns(20);
+        transactionsTextArea.setForeground(new java.awt.Color(255, 255, 255));
         transactionsTextArea.setRows(5);
         jScrollPane1.setViewportView(transactionsTextArea);
 
-        bookTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        bookTextArea.setBackground(new java.awt.Color(51, 51, 51));
         bookTextArea.setColumns(20);
+        bookTextArea.setForeground(new java.awt.Color(255, 255, 255));
         bookTextArea.setRows(5);
         jScrollPane2.setViewportView(bookTextArea);
 
-        studentTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        studentTextArea.setBackground(new java.awt.Color(51, 51, 51));
         studentTextArea.setColumns(20);
+        studentTextArea.setForeground(new java.awt.Color(255, 255, 255));
         studentTextArea.setRows(5);
         jScrollPane4.setViewportView(studentTextArea);
 
@@ -1337,12 +1395,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(loanManagementPanel, "card6");
 
-        notificationsPanel.setBackground(new java.awt.Color(255, 204, 204));
+        notificationsPanel.setBackground(new java.awt.Color(34, 42, 44));
         notificationsPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        notificationsTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        notificationsTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         notificationsTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        notificationsTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         notificationsTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         notificationsTitleLabel.setText("Notifications");
 
@@ -1363,7 +1422,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        notificationsBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
+        notificationsBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout notificationsBodyPanelLayout = new javax.swing.GroupLayout(notificationsBodyPanel);
         notificationsBodyPanel.setLayout(notificationsBodyPanelLayout);
@@ -1399,12 +1458,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(notificationsPanel, "card7");
 
-        settingsPanel.setBackground(new java.awt.Color(255, 204, 204));
+        settingsPanel.setBackground(new java.awt.Color(34, 42, 44));
         settingsPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        settingsTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        settingsTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         profileTitleLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        profileTitleLabel2.setForeground(new java.awt.Color(255, 255, 255));
         profileTitleLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profileTitleLabel2.setText("Settings");
 
@@ -1425,7 +1485,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        settingsBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
+        settingsBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout settingsBodyPanelLayout = new javax.swing.GroupLayout(settingsBodyPanel);
         settingsBodyPanel.setLayout(settingsBodyPanelLayout);
@@ -1461,12 +1521,13 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         librarianTabPanel.add(settingsPanel, "card8");
 
-        helpAndSupportPanel.setBackground(new java.awt.Color(255, 204, 204));
+        helpAndSupportPanel.setBackground(new java.awt.Color(34, 42, 44));
         helpAndSupportPanel.setPreferredSize(new java.awt.Dimension(671, 488));
 
-        helpAndSupportTitlePanel.setBackground(new java.awt.Color(204, 153, 255));
+        helpAndSupportTitlePanel.setBackground(new java.awt.Color(51, 51, 51));
 
         profileTitleLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        profileTitleLabel1.setForeground(new java.awt.Color(255, 255, 255));
         profileTitleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profileTitleLabel1.setText("Help & Support");
 
@@ -1487,9 +1548,10 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        helpAndSupportBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
+        helpAndSupportBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         viewTermAndConditionsLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        viewTermAndConditionsLabel.setForeground(new java.awt.Color(255, 255, 255));
         viewTermAndConditionsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewTermAndConditionsLabel.setText("View Terms & Conditions");
         viewTermAndConditionsLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1665,46 +1727,6 @@ public class LibrarianInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_viewBooksLabelMouseClicked
 
-    private void booksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_booksTableMouseClicked
-        int row = booksTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) booksTable.getModel();
-        if (model.getValueAt(row, 1) != null) {
-            bookTitleField.setText(model.getValueAt(row, 1).toString());
-            authorField.setText(model.getValueAt(row, 2).toString());
-            genreField.setText(model.getValueAt(row, 3).toString());
-            publicationField.setText(model.getValueAt(row, 5).toString());
-        }
-    }//GEN-LAST:event_booksTableMouseClicked
-
-    private void studentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTableMouseClicked
-        int selectedRow = studentsTable.getSelectedRow();
-        if (selectedRow != -1) { // Check if a row is selected
-            // Retrieve data from the selected row with null checks
-            Object studentIDObj = studentsTable.getValueAt(selectedRow, 0);
-            Object fullNameObj = studentsTable.getValueAt(selectedRow, 1);
-            Object usernameObj = studentsTable.getValueAt(selectedRow, 2);
-            Object emailObj = studentsTable.getValueAt(selectedRow, 3);
-            Object addressObj = studentsTable.getValueAt(selectedRow, 4);
-            Object courseObj = studentsTable.getValueAt(selectedRow, 5);
-
-            // Check if objects are not null and convert to appropriate types
-            String studentID = studentIDObj != null ? studentIDObj.toString() : "";
-            String fullName = fullNameObj != null ? fullNameObj.toString() : "";
-            String username = usernameObj != null ? usernameObj.toString() : "";
-            String email = emailObj != null ? emailObj.toString() : "";
-            String address = addressObj != null ? addressObj.toString() : "";
-            String course = courseObj != null ? courseObj.toString() : "";
-
-            // Set the retrieved data to the corresponding fields
-            studentIDField.setText(studentID);
-            studentFullNameField.setText(fullName);
-            usernameField.setText(username);
-            emailField.setText(email);
-            addressField.setText(address);
-            courseField.setText(course);
-        }
-    }//GEN-LAST:event_studentsTableMouseClicked
-
     private void moreDetailsLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moreDetailsLabel1MouseClicked
         openTab(catalogAdminPanel);
     }//GEN-LAST:event_moreDetailsLabel1MouseClicked
@@ -1812,6 +1834,46 @@ public class LibrarianInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_viewBorrowsButtonMouseClicked
 
+    private void booksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_booksTableMouseClicked
+        int row = booksTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) booksTable.getModel();
+        if (model.getValueAt(row, 1) != null) {
+            bookTitleField.setText(model.getValueAt(row, 1).toString());
+            authorField.setText(model.getValueAt(row, 2).toString());
+            genreField.setText(model.getValueAt(row, 3).toString());
+            publicationField.setText(model.getValueAt(row, 5).toString());
+        }
+    }//GEN-LAST:event_booksTableMouseClicked
+
+    private void studentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTableMouseClicked
+        int selectedRow = studentsTable.getSelectedRow();
+        if (selectedRow != -1) { // Check if a row is selected
+            // Retrieve data from the selected row with null checks
+            Object studentIDObj = studentsTable.getValueAt(selectedRow, 0);
+            Object fullNameObj = studentsTable.getValueAt(selectedRow, 1);
+            Object usernameObj = studentsTable.getValueAt(selectedRow, 2);
+            Object emailObj = studentsTable.getValueAt(selectedRow, 3);
+            Object addressObj = studentsTable.getValueAt(selectedRow, 4);
+            Object courseObj = studentsTable.getValueAt(selectedRow, 5);
+
+            // Check if objects are not null and convert to appropriate types
+            String studentID = studentIDObj != null ? studentIDObj.toString() : "";
+            String fullName = fullNameObj != null ? fullNameObj.toString() : "";
+            String username = usernameObj != null ? usernameObj.toString() : "";
+            String email = emailObj != null ? emailObj.toString() : "";
+            String address = addressObj != null ? addressObj.toString() : "";
+            String course = courseObj != null ? courseObj.toString() : "";
+
+            // Set the retrieved data to the corresponding fields
+            studentIDField.setText(studentID);
+            studentFullNameField.setText(fullName);
+            usernameField.setText(username);
+            emailField.setText(email);
+            addressField.setText(address);
+            courseField.setText(course);
+        }
+    }//GEN-LAST:event_studentsTableMouseClicked
+
     private void transactionsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionsTableMouseClicked
         int selectedRow = transactionsTable.getSelectedRow();
         if (selectedRow != -1) { // Check if a row is selected
@@ -1868,7 +1930,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 borrowStudentDetailsTextArea.setText(formatStudentDetails(student));
             } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(this, "Error: One or more IDs are null. Please select a valid row.", "Error", JOptionPane.ERROR_MESSAGE);
-                
+
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
@@ -1886,14 +1948,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel bookDetailsMiniPanel;
     private javax.swing.JTextArea bookTextArea;
     private javax.swing.JTextField bookTitleField;
-    private javax.swing.JTable booksTable;
+    private com.library.custom.DarkTable booksTable;
     private javax.swing.JScrollPane booksTableScrollPane;
     private javax.swing.JTextArea borrowBookDetailsTextArea;
     private javax.swing.JPanel borrowManagementPanel;
     private javax.swing.JTextArea borrowStudentDetailsTextArea;
     private javax.swing.JTextArea borrowTextArea;
     private javax.swing.JScrollPane borrowsScrollPane;
-    private javax.swing.JTable borrowsTable;
+    private com.library.custom.DarkTable borrowsTable;
     private javax.swing.JPanel catalogAdminBodyPanel;
     private javax.swing.JLabel catalogAdminLabel;
     private javax.swing.JPanel catalogAdminPanel;
@@ -1975,14 +2037,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JTextField studentFullNameField;
     private javax.swing.JTextField studentIDField;
     private javax.swing.JTextArea studentTextArea;
-    private javax.swing.JTable studentsTable;
+    private com.library.custom.DarkTable studentsTable;
     private javax.swing.JScrollPane studentsTableScrollPane;
     private javax.swing.JPanel subOverviewReportPanel;
     private javax.swing.JLabel totalStudentCount;
     private javax.swing.JLabel totalStudentsLabel;
     private javax.swing.JPanel transactionMangementPanel;
     private javax.swing.JScrollPane transactionsScrollPane;
-    private javax.swing.JTable transactionsTable;
+    private com.library.custom.DarkTable transactionsTable;
     private javax.swing.JTextArea transactionsTextArea;
     private javax.swing.JPanel userAdminBodyPanel;
     private javax.swing.JLabel userAdminLabel;
@@ -2018,7 +2080,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         JLabel[] labels = {dashBoardLabel, profileInformationLabel, catalogAdminLabel, userAdminLabel, loanManagementLabel, notificationsLabel, settingsLabel, helpAndSupportLabel, logOutLabel};
         for (JLabel label : labels) {
             label.setOpaque(true);
-            label.setBackground(new Color(255, 204, 204));
+            label.setBackground(new Color(51, 51, 51));
             label.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -2037,12 +2099,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    label.setBackground(new Color(102, 255, 102));
+                    label.setBackground(new Color(250, 250, 250));
+                    label.setForeground(new Color(51, 51, 51));
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    label.setBackground(new Color(255, 204, 204));
+                    label.setBackground(new Color(51, 51, 51));
+                    label.setForeground(new Color(250, 250, 250));
                 }
             });
         }
@@ -2053,7 +2117,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         JLabel[] labels = {moreDetailsLabel1, moreDetailsLabel2, moreDetailsLabel3, moreDetailsLabel4, editProfileDetailsLabel, viewTermAndConditionsLabel, addBookLabel, editBookLabel, deleteBookLabel, viewBooksLabel, deleteStudentButton, viewStudentsLabel, viewBorrowsButton, viewTransactionsButton};
         for (JLabel label : labels) {
             label.setOpaque(true);
-            label.setBackground(new Color(153, 153, 255));
+            label.setBackground(new Color(51, 51, 51));
             label.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -2072,12 +2136,14 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    label.setBackground(new Color(102, 255, 102));
+                    label.setBackground(new Color(250, 250, 250));
+                    label.setForeground(new Color(51, 51, 51));
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    label.setBackground(new Color(153, 153, 255));
+                    label.setBackground(new Color(51, 51, 51));
+                    label.setForeground(new Color(250, 250, 250));
                 }
             });
         }
