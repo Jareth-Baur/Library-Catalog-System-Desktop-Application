@@ -1,8 +1,9 @@
 package com.library.librarianInterface;
 
 import com.library.util.DatabaseAccess;
-import com.library.frames.HomeMenu;
+import com.library.frames.HomePage;
 import com.library.objects.Book;
+import com.library.objects.Student;
 import com.library.termsAndConditions.LibrarianTermsAndConditions;
 import java.awt.*;
 import java.awt.event.*;
@@ -116,6 +117,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         userAdminBodyPanel = new javax.swing.JPanel();
         studentsTableScrollPane = new javax.swing.JScrollPane();
         studentsTable = new javax.swing.JTable();
+        viewStudentsLabel = new javax.swing.JLabel();
         loanManagementPanel = new javax.swing.JPanel();
         loanManagementTitlePanel = new javax.swing.JPanel();
         loanManagementTitleLabel = new javax.swing.JLabel();
@@ -939,7 +941,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Student ID", "Full Name", "Username", "Email", "Publication Date", "Status"
+                "Student ID", "Full Name", "Username", "Email", "Address", "Course"
             }
         ));
         studentsTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -949,21 +951,37 @@ public class LibrarianInterface extends javax.swing.JFrame {
         });
         studentsTableScrollPane.setViewportView(studentsTable);
 
+        viewStudentsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewStudentsLabel.setText("View Students");
+        viewStudentsLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewStudentsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewStudentsLabel.setPreferredSize(new java.awt.Dimension(45, 27));
+        viewStudentsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewStudentsLabelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout userAdminBodyPanelLayout = new javax.swing.GroupLayout(userAdminBodyPanel);
         userAdminBodyPanel.setLayout(userAdminBodyPanelLayout);
         userAdminBodyPanelLayout.setHorizontalGroup(
             userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userAdminBodyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(studentsTableScrollPane)
+                .addGroup(userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(studentsTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addGroup(userAdminBodyPanelLayout.createSequentialGroup()
+                        .addComponent(viewStudentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         userAdminBodyPanelLayout.setVerticalGroup(
             userAdminBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userAdminBodyPanelLayout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addComponent(studentsTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(146, Short.MAX_VALUE)
+                .addComponent(viewStudentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(studentsTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout userAdminPanelLayout = new javax.swing.GroupLayout(userAdminPanel);
@@ -1264,7 +1282,9 @@ public class LibrarianInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editProfileDetailsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileDetailsLabelMouseClicked
-
+        String librarianID = getLibrarianIDByUsername(username);
+        new EditLibrarianProfileDetails(librarianID).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_editProfileDetailsLabelMouseClicked
 
     private void dashBoardLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBoardLabelMouseClicked
@@ -1303,7 +1323,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             System.out.println("Logging out...");
-            new HomeMenu().setVisible(true);
+            new HomePage().setVisible(true);
             DatabaseAccess.addLog("logout", "security");
             this.dispose();
         } else {
@@ -1334,7 +1354,22 @@ public class LibrarianInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_editBookLabelMouseClicked
 
     private void deleteBookLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBookLabelMouseClicked
+        int selectedRow = booksTable.getSelectedRow();
 
+        if (selectedRow != -1) {
+            int bookID = (int) booksTable.getValueAt(selectedRow, 0); // Assuming book ID is in column 0
+
+            // Confirm deletion
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this book?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                DatabaseAccess.deleteBook(bookID);
+                // Optionally, remove the row from the table model to update the view
+                ((DefaultTableModel) booksTable.getModel()).removeRow(selectedRow);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No book selected. Please select a book to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_deleteBookLabelMouseClicked
 
     private void viewBooksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBooksLabelMouseClicked
@@ -1392,6 +1427,29 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private void moreDetailsLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moreDetailsLabel4MouseClicked
         openTab(userAdminPanel);
     }//GEN-LAST:event_moreDetailsLabel4MouseClicked
+
+    private void viewStudentsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewStudentsLabelMouseClicked
+        DefaultTableModel model = (DefaultTableModel) studentsTable.getModel();
+
+        // Clear existing rows
+        model.setRowCount(0);
+
+        // Fetch all students
+        Student[] students = DatabaseAccess.getAllStudents();
+
+        // Add each student to the table model with only specified columns
+        for (Student student : students) {
+            Object[] rowData = new Object[]{
+                student.getStudentID(),
+                student.getFullName(),
+                student.getUserName(),
+                student.getEmail(),
+                student.getAddress(),
+                student.getCourse()
+            };
+            model.addRow(rowData);
+        }
+    }//GEN-LAST:event_viewStudentsLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activeLoansCount;
@@ -1481,6 +1539,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel userAdminTitlePanel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel viewBooksLabel;
+    private javax.swing.JLabel viewStudentsLabel;
     private javax.swing.JLabel viewTermAndConditionsLabel;
     private javax.swing.JPanel westNavPanel;
     // End of variables declaration//GEN-END:variables
@@ -1595,7 +1654,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         totalStudentCount.setText(DatabaseAccess.countTotals("students") + "");
     }
 
-    public void getMostUsedBook() {
+    private void getMostUsedBook() {
         try {
             // Query to count occurrences of each bookID
             String countQuery = "SELECT bookID, COUNT(*) AS borrowCount FROM borrows GROUP BY bookID ORDER BY borrowCount DESC LIMIT 1";
@@ -1637,4 +1696,43 @@ public class LibrarianInterface extends javax.swing.JFrame {
             System.out.println("Database error: " + e.getMessage());
         }
     }
+
+    public String getLibrarianIDByUsername(String username) {
+        String librarianID = "";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(sqlUrl, sqlUsername, sqlPassword);
+            String query = "SELECT librarianID FROM librarians WHERE userName = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                librarianID = resultSet.getString("librarianID");
+            } else {
+                JOptionPane.showMessageDialog(null, "No librarian found with the provided username.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing connection: " + e.getMessage());
+            }
+        }
+        return librarianID;
+    }
+
 }

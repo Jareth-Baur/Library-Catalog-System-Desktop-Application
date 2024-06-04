@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.library.frames;
 
 import com.library.librarianInterface.LibrarianInterface;
@@ -17,7 +13,6 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author Jareth Bayron Baur
  * @since February 26, 2024
  */
-//@SuppressWarnings("unusedelements")
 public class LoginFrame extends javax.swing.JFrame {
 
     /**
@@ -91,6 +86,7 @@ public class LoginFrame extends javax.swing.JFrame {
         registerButton.setBackground(new java.awt.Color(51, 51, 51));
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
         registerButton.setText("Register Here");
+        registerButton.setToolTipText("Register as a new User");
         registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,9 +101,11 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         registerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Librarian" }));
+        registerComboBox.setToolTipText("Select Role Uppon Registering");
         registerComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Librarian", "Student" }));
+        roleComboBox.setToolTipText("Select Role");
         roleComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,6 +114,7 @@ public class LoginFrame extends javax.swing.JFrame {
         homeButton.setBackground(new java.awt.Color(51, 51, 51));
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
         homeButton.setText("Home");
+        homeButton.setToolTipText("Back to Home Page");
         homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,28 +131,23 @@ public class LoginFrame extends javax.swing.JFrame {
         roleLabel.setForeground(new java.awt.Color(255, 255, 255));
         roleLabel.setText("Role:");
 
+        passwordTextField.setToolTipText("Enter Password");
+
         usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username/Email: ");
 
-        usernameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                usernameTextFieldMouseEntered(evt);
-            }
-        });
+        usernameTextField.setToolTipText("Enter UserName");
 
         rememberMeCheckBox.setBackground(new java.awt.Color(51, 51, 51));
         rememberMeCheckBox.setForeground(new java.awt.Color(255, 255, 255));
         rememberMeCheckBox.setText("Remember Me");
+        rememberMeCheckBox.setToolTipText("Remember Username and Password");
         rememberMeCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        rememberMeCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                rememberMeCheckBoxMouseEntered(evt);
-            }
-        });
 
         loginButton.setBackground(new java.awt.Color(51, 51, 51));
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("Login");
+        loginButton.setToolTipText("Proceed Login");
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -257,37 +251,27 @@ public class LoginFrame extends javax.swing.JFrame {
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         String registerChoice = registerComboBox.getSelectedItem().toString();
         if (registerChoice.equalsIgnoreCase("Student")) {
-            new StudentFrame().setVisible(true);
+            new RegisterStudent().setVisible(true);
         } else {
-            new LibrarianFrame().setVisible(true);
+            new RegisterLibrarian().setVisible(true);
         }
         this.dispose();
     }//GEN-LAST:event_registerButtonMouseClicked
 
     private void registerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseEntered
-        registerButton.setToolTipText("Register as a new User");
         registerButton.setBackground(new Color(250, 250, 250));
         registerButton.setForeground(new Color(51, 51, 51));
     }//GEN-LAST:event_registerButtonMouseEntered
 
     private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
-        new HomeMenu().setVisible(true);
+        new HomePage().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_homeButtonMouseClicked
 
     private void homeButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseEntered
-        homeButton.setToolTipText("Back to Home Page");
         homeButton.setBackground(new Color(250, 250, 250));
         homeButton.setForeground(new Color(51, 51, 51));
     }//GEN-LAST:event_homeButtonMouseEntered
-
-    private void usernameTextFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTextFieldMouseEntered
-        usernameTextField.setToolTipText("Enter UserName");
-    }//GEN-LAST:event_usernameTextFieldMouseEntered
-
-    private void rememberMeCheckBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rememberMeCheckBoxMouseEntered
-        rememberMeCheckBox.setToolTipText("Remember Username and Password");
-    }//GEN-LAST:event_rememberMeCheckBoxMouseEntered
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         boolean loginSuccess = performLogin();
@@ -297,7 +281,6 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonMouseClicked
 
     private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
-        loginButton.setToolTipText("Proceed Login");
         loginButton.setBackground(new Color(250, 250, 250));
         loginButton.setForeground(new Color(51, 51, 51));
     }//GEN-LAST:event_loginButtonMouseEntered

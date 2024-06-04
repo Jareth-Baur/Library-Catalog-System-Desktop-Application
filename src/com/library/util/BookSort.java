@@ -8,7 +8,7 @@ import java.util.*;
  * @since March 24, 2024
  */
 public class BookSort {
-    
+
     private Book[] books;
 
     public BookSort(ArrayList<Book> bookList) {
@@ -17,7 +17,7 @@ public class BookSort {
             books[i] = bookList.get(i);
         }
     }
-    
+
     public static void main(String[] args) {
         Random rand = new Random();
 

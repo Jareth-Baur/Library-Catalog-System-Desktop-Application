@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.library.objects;
+
+import java.util.Objects;
 
 /**
  * @author Jareth Bayron Baur
@@ -10,23 +8,21 @@ package com.library.objects;
  */
 public class Student {
 
-    private String studentID;
+    private int studentID;
     private String fullName;
     private String userName;
     private String email;
     private String password;
-    private int phoneNumber;
+    private String phoneNumber;
     private String address;
     private String course;
-    private String yearLevel;
+    private int yearLevel;
     private String section;
-    private int booksBorrowed;
-    private int booksReturned;
 
     public Student() {
     }
 
-    public Student(String studentID, String fullName, String userName, String email, String password, int phoneNumber, String address, String course, String yearLevel, String section) {
+    public Student(int studentID, String fullName, String userName, String email, String password, String phoneNumber, String address, String course, int yearLevel, String section) {
         this.studentID = studentID;
         this.fullName = fullName;
         this.userName = userName;
@@ -39,26 +35,87 @@ public class Student {
         this.section = section;
     }
 
-    public Student(String studentID, String fullName, String userName, String email, String password, int phoneNumber, String address, String course, String yearLevel, String section, int booksBorrowed, int booksReturned) {
-        this.studentID = studentID;
-        this.fullName = fullName;
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.course = course;
-        this.yearLevel = yearLevel;
-        this.section = section;
-        this.booksBorrowed = booksBorrowed;
-        this.booksReturned = booksReturned;
+    public Student(Object[] rowData) {
+        this.studentID = (int) rowData[0];
+        this.fullName = (String) rowData[1];
+        this.userName = (String) rowData[2];
+        this.email = (String) rowData[3];
+        this.password = (String) rowData[4];
+        this.phoneNumber = (String) rowData[5];
+        this.address = (String) rowData[6];
+        this.course = (String) rowData[7];
+        this.yearLevel = (int) rowData[8];
+        this.section = (String) rowData[9];
     }
 
-    public String getStudentID() {
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + this.studentID;
+        hash = 23 * hash + Objects.hashCode(this.fullName);
+        hash = 23 * hash + Objects.hashCode(this.userName);
+        hash = 23 * hash + Objects.hashCode(this.email);
+        hash = 23 * hash + Objects.hashCode(this.password);
+        hash = 23 * hash + Objects.hashCode(this.phoneNumber);
+        hash = 23 * hash + Objects.hashCode(this.address);
+        hash = 23 * hash + Objects.hashCode(this.course);
+        hash = 23 * hash + this.yearLevel;
+        hash = 23 * hash + Objects.hashCode(this.section);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (this.studentID != other.studentID) {
+            return false;
+        }
+        if (this.yearLevel != other.yearLevel) {
+            return false;
+        }
+        if (!Objects.equals(this.fullName, other.fullName)) {
+            return false;
+        }
+        if (!Objects.equals(this.userName, other.userName)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.phoneNumber, other.phoneNumber)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.course, other.course)) {
+            return false;
+        }
+        return Objects.equals(this.section, other.section);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + "studentID=" + studentID + ", fullName=" + fullName + ", userName=" + userName + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", address=" + address + ", course=" + course + ", yearLevel=" + yearLevel + ", section=" + section + '}';
+    }
+
+    public int getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(String studentID) {
+    public void setStudentID(int studentID) {
         this.studentID = studentID;
     }
 
@@ -94,11 +151,11 @@ public class Student {
         this.password = password;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -118,11 +175,11 @@ public class Student {
         this.course = course;
     }
 
-    public String getYearLevel() {
+    public int getYearLevel() {
         return yearLevel;
     }
 
-    public void setYearLevel(String yearLevel) {
+    public void setYearLevel(int yearLevel) {
         this.yearLevel = yearLevel;
     }
 
@@ -132,30 +189,6 @@ public class Student {
 
     public void setSection(String section) {
         this.section = section;
-    }
-
-    public int getBooksBorrowed() {
-        return booksBorrowed;
-    }
-
-    public void setBooksBorrowed(int booksBorrowed) {
-        this.booksBorrowed = booksBorrowed;
-    }
-
-    public int getBooksReturned() {
-        return booksReturned;
-    }
-
-    public void setBooksReturned(int booksReturned) {
-        this.booksReturned = booksReturned;
-    }
-
-    /**
-     * @returns the fields to string
-     */
-    @Override
-    public String toString() {
-        return "Student{" + "studentID=" + studentID + ", fullName=" + fullName + ", userName=" + userName + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", address=" + address + ", course=" + course + ", yearLevel=" + yearLevel + ", section=" + section + ", booksBorrowed=" + booksBorrowed + ", booksReturned=" + booksReturned + '}';
     }
 
 }
