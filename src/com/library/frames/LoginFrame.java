@@ -132,6 +132,11 @@ public class LoginFrame extends javax.swing.JFrame {
         roleLabel.setText("Role:");
 
         passwordTextField.setToolTipText("Enter Password");
+        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextFieldActionPerformed(evt);
+            }
+        });
 
         usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username/Email: ");
@@ -299,6 +304,13 @@ public class LoginFrame extends javax.swing.JFrame {
         homeButton.setBackground(new Color(51, 51, 51));
         homeButton.setForeground(new Color(250, 250, 250));
     }//GEN-LAST:event_homeButtonMouseExited
+
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
+        boolean loginSuccess = performLogin();
+        if (loginSuccess) {
+            DatabaseAccess.addLog("login", "security");
+        }
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton homeButton;
