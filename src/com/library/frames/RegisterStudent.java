@@ -468,8 +468,6 @@ public class RegisterStudent extends javax.swing.JFrame {
 
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         addStudent();
-        new LoginFrame().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_registerButtonMouseClicked
 
     private void passwordTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextFieldKeyReleased
@@ -563,7 +561,6 @@ public class RegisterStudent extends javax.swing.JFrame {
         String passwordDB = "Jareth0223";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-
         try {
             connection = DriverManager.getConnection(url, username, passwordDB);
             String insertQuery = "INSERT INTO students (fullName, userName, email, password, phoneNumber, address, course, yearLevel, section) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -580,10 +577,12 @@ public class RegisterStudent extends javax.swing.JFrame {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(this, "Data added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();
+                new LoginFrame().setVisible(true);
+                this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to add data.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Failed to register.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid input for year level. Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);

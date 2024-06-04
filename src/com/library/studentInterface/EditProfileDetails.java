@@ -2,15 +2,16 @@ package com.library.studentInterface;
 
 import java.awt.Color;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  * @author Jareth Baur
  * @since March 24, 2024
  */
 public class EditProfileDetails extends javax.swing.JFrame {
-    
+
     private String studentID;
-    
+
     private final String SQLURL = "jdbc:mysql://localhost:3306/library catalog system";
     private final String SQLUSERNAME = "Jareth";
     private final String SQLPASSWORD = "Jareth0223";
@@ -574,7 +575,7 @@ public class EditProfileDetails extends javax.swing.JFrame {
             textField.setForeground(new Color(153, 153, 153));
         }
     }
-    
+
     private void displayInformation(String studentID) {
         try {
             String selectQuery = "SELECT * FROM `students` WHERE studentID = ?";
@@ -621,8 +622,32 @@ public class EditProfileDetails extends javax.swing.JFrame {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    
+
     private void updateDetails() {
+        // Basic field validation
+        if (firstNameTextField.getText().isBlank() || middleNameTextField.getText().isBlank() || lastNameTextField.getText().isBlank()
+                || usernameTextField.getText().isBlank() || emailTextField.getText().isBlank()
+                || phoneNumberTextField.getText().isBlank() || addressTextField.getText().isBlank()
+                || sectionTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill out all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Check Section if valid
+        if (sectionTextField.getText().length() > 1) {
+            JOptionPane.showMessageDialog(this, "Incorrect input for section.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validate email format (basic validation)
+        if (!emailTextField.getText().contains("@")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to update current details?", "Update Confirmation", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.NO_OPTION) {
+            return;
+        }
         try {
             String updateQuery = "UPDATE students SET fullName = ?, userName = ?, email = ?, phoneNumber = ?, address = ?, course = ?, yearLevel = ?, section = ? WHERE studentID = ?";
             Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
@@ -639,6 +664,7 @@ public class EditProfileDetails extends javax.swing.JFrame {
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Profile details updated successfully!");
+                JOptionPane.showMessageDialog(null, "Profile details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
                 StudentInterface.username = usernameTextField.getText();
                 new StudentInterface().setVisible(true);
