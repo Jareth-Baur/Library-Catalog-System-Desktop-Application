@@ -24,6 +24,7 @@ public class Main {
         //new LoginFrame().setVisible(true);
         //new RegisterStudent().setVisible(true);
         //new RegisterLibrarian().setVisible(true);
+        //StudentInterface.username = "Jareth";
         //new StudentInterface().setVisible(true);
         LibrarianInterface.username = "admin";
         new LibrarianInterface().setVisible(true);

@@ -3,7 +3,9 @@ package com.library.librarianInterface;
 import com.library.util.DatabaseAccess;
 import com.library.frames.HomePage;
 import com.library.objects.Book;
+import com.library.objects.Borrow;
 import com.library.objects.Student;
+import com.library.objects.Transaction;
 import com.library.termsAndConditions.LibrarianTermsAndConditions;
 import java.awt.*;
 import java.awt.event.*;
@@ -130,6 +132,27 @@ public class LibrarianInterface extends javax.swing.JFrame {
         loanManagementTitlePanel = new javax.swing.JPanel();
         loanManagementTitleLabel = new javax.swing.JLabel();
         loanManagementBodyPanel = new javax.swing.JPanel();
+        loanManagementTabbedPane = new javax.swing.JTabbedPane();
+        borrowManagementPanel = new javax.swing.JPanel();
+        borrowsScrollPane = new javax.swing.JScrollPane();
+        borrowsTable = new javax.swing.JTable();
+        viewBorrowsButton = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        borrowTextArea = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        borrowStudentDetailsTextArea = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        borrowBookDetailsTextArea = new javax.swing.JTextArea();
+        transactionMangementPanel = new javax.swing.JPanel();
+        transactionsScrollPane = new javax.swing.JScrollPane();
+        transactionsTable = new javax.swing.JTable();
+        viewTransactionsButton = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        transactionsTextArea = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        bookTextArea = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        studentTextArea = new javax.swing.JTextArea();
         notificationsPanel = new javax.swing.JPanel();
         notificationsTitlePanel = new javax.swing.JPanel();
         notificationsTitleLabel = new javax.swing.JLabel();
@@ -398,7 +421,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
         activeLoansCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         overviewReportPanel.add(activeLoansCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 60, 60));
 
-        activeLoansLabel.setText("Active Loans");
+        activeLoansLabel.setText("Total Loans");
         overviewReportPanel.add(activeLoansLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
         overdueBooksCount.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -1103,7 +1126,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
             loanManagementTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loanManagementTitlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loanManagementTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                .addComponent(loanManagementTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         loanManagementTitlePanelLayout.setVerticalGroup(
@@ -1116,15 +1139,179 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
         loanManagementBodyPanel.setBackground(new java.awt.Color(153, 153, 255));
 
+        loanManagementTabbedPane.setBackground(new java.awt.Color(153, 153, 255));
+
+        borrowManagementPanel.setBackground(new java.awt.Color(153, 153, 255));
+
+        borrowsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Borrow ID", "Student ID", "Book ID", "Borrow Date", "Due Date", "Returned Date", "Status"
+            }
+        ));
+        borrowsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                borrowsTableMouseClicked(evt);
+            }
+        });
+        borrowsScrollPane.setViewportView(borrowsTable);
+
+        viewBorrowsButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewBorrowsButton.setText("View Borrows");
+        viewBorrowsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewBorrowsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewBorrowsButton.setPreferredSize(new java.awt.Dimension(45, 27));
+        viewBorrowsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewBorrowsButtonMouseClicked(evt);
+            }
+        });
+
+        borrowTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        borrowTextArea.setColumns(20);
+        borrowTextArea.setRows(5);
+        jScrollPane3.setViewportView(borrowTextArea);
+
+        borrowStudentDetailsTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        borrowStudentDetailsTextArea.setColumns(20);
+        borrowStudentDetailsTextArea.setRows(5);
+        jScrollPane5.setViewportView(borrowStudentDetailsTextArea);
+
+        borrowBookDetailsTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        borrowBookDetailsTextArea.setColumns(20);
+        borrowBookDetailsTextArea.setRows(5);
+        jScrollPane6.setViewportView(borrowBookDetailsTextArea);
+
+        javax.swing.GroupLayout borrowManagementPanelLayout = new javax.swing.GroupLayout(borrowManagementPanel);
+        borrowManagementPanel.setLayout(borrowManagementPanelLayout);
+        borrowManagementPanelLayout.setHorizontalGroup(
+            borrowManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(borrowManagementPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(borrowManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(borrowsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                    .addGroup(borrowManagementPanelLayout.createSequentialGroup()
+                        .addComponent(viewBorrowsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(borrowManagementPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        borrowManagementPanelLayout.setVerticalGroup(
+            borrowManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, borrowManagementPanelLayout.createSequentialGroup()
+                .addGroup(borrowManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewBorrowsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(borrowsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        loanManagementTabbedPane.addTab("Borrow Management", borrowManagementPanel);
+
+        transactionMangementPanel.setBackground(new java.awt.Color(153, 153, 255));
+
+        transactionsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Transaction ID", "Book ID", "Student ID", "Transaction Type", "Transaction Date"
+            }
+        ));
+        transactionsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transactionsTableMouseClicked(evt);
+            }
+        });
+        transactionsScrollPane.setViewportView(transactionsTable);
+
+        viewTransactionsButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewTransactionsButton.setText("View Transactions");
+        viewTransactionsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewTransactionsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewTransactionsButton.setPreferredSize(new java.awt.Dimension(45, 27));
+        viewTransactionsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewTransactionsButtonMouseClicked(evt);
+            }
+        });
+
+        transactionsTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        transactionsTextArea.setColumns(20);
+        transactionsTextArea.setRows(5);
+        jScrollPane1.setViewportView(transactionsTextArea);
+
+        bookTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        bookTextArea.setColumns(20);
+        bookTextArea.setRows(5);
+        jScrollPane2.setViewportView(bookTextArea);
+
+        studentTextArea.setBackground(new java.awt.Color(160, 160, 255));
+        studentTextArea.setColumns(20);
+        studentTextArea.setRows(5);
+        jScrollPane4.setViewportView(studentTextArea);
+
+        javax.swing.GroupLayout transactionMangementPanelLayout = new javax.swing.GroupLayout(transactionMangementPanel);
+        transactionMangementPanel.setLayout(transactionMangementPanelLayout);
+        transactionMangementPanelLayout.setHorizontalGroup(
+            transactionMangementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transactionMangementPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(transactionMangementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(transactionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                    .addGroup(transactionMangementPanelLayout.createSequentialGroup()
+                        .addComponent(viewTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(transactionMangementPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        transactionMangementPanelLayout.setVerticalGroup(
+            transactionMangementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transactionMangementPanelLayout.createSequentialGroup()
+                .addGroup(transactionMangementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(transactionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        loanManagementTabbedPane.addTab("Transaction Management", transactionMangementPanel);
+
         javax.swing.GroupLayout loanManagementBodyPanelLayout = new javax.swing.GroupLayout(loanManagementBodyPanel);
         loanManagementBodyPanel.setLayout(loanManagementBodyPanelLayout);
         loanManagementBodyPanelLayout.setHorizontalGroup(
             loanManagementBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(loanManagementTabbedPane)
         );
         loanManagementBodyPanelLayout.setVerticalGroup(
             loanManagementBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
+            .addComponent(loanManagementTabbedPane)
         );
 
         javax.swing.GroupLayout loanManagementPanelLayout = new javax.swing.GroupLayout(loanManagementPanel);
@@ -1584,6 +1771,112 @@ public class LibrarianInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteStudentButtonMouseClicked
 
+    private void viewTransactionsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTransactionsButtonMouseClicked
+        // Fetch all transactions from the database
+        Transaction[] transactions = DatabaseAccess.getAllTransactions();
+
+        // Get the table model
+        DefaultTableModel model = (DefaultTableModel) transactionsTable.getModel();
+
+        // Clear existing rows
+        model.setRowCount(0);
+
+        // Populate the table with transaction data
+        for (Transaction transaction : transactions) {
+            Object[] rowData = new Object[]{
+                transaction.getTransactionID(),
+                transaction.getBookID(),
+                transaction.getStudentID(),
+                transaction.getTransactionType(),
+                transaction.getTransactionDate()
+            };
+            model.addRow(rowData);
+        }
+    }//GEN-LAST:event_viewTransactionsButtonMouseClicked
+
+    private void viewBorrowsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBorrowsButtonMouseClicked
+        try {
+            Borrow[] borrows = DatabaseAccess.getAllBorrows();
+
+            DefaultTableModel model = (DefaultTableModel) borrowsTable.getModel();
+
+            // Clear the existing data in the table
+            model.setRowCount(0);
+
+            // Add the new data to the table
+            for (Borrow borrow : borrows) {
+                model.addRow(new Object[]{borrow.getBorrowID(), borrow.getStudentID(), borrow.getBookID(), borrow.getDueDate(), borrow.getBorrowDate(), borrow.getReturnedDate(), borrow.getStatus()});
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_viewBorrowsButtonMouseClicked
+
+    private void transactionsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionsTableMouseClicked
+        int selectedRow = transactionsTable.getSelectedRow();
+        if (selectedRow != -1) { // Check if a row is selected
+            try {
+                // Retrieve IDs from the selected row
+                Integer transactionID = (Integer) transactionsTable.getValueAt(selectedRow, 0);
+                Integer bookID = (Integer) transactionsTable.getValueAt(selectedRow, 1);
+                Integer studentID = (Integer) transactionsTable.getValueAt(selectedRow, 2);
+
+                if (transactionID == null || bookID == null || studentID == null) {
+                    throw new NullPointerException("One or more IDs are null.");
+                }
+
+                // Fetch details from the database
+                Transaction transaction = DatabaseAccess.getTransactionByID(transactionID);
+                Book book = DatabaseAccess.getBookByID(bookID);
+                Student student = DatabaseAccess.getStudentByID(studentID);
+
+                // Display the details in the text areas
+                transactionsTextArea.setText(formatTransactionDetails(transaction));
+                bookTextArea.setText(formatBookDetails(book));
+                studentTextArea.setText(formatStudentDetails(student));
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Error: One or more IDs are null. Please select a valid row.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No row selected. Please select a row.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_transactionsTableMouseClicked
+
+    private void borrowsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrowsTableMouseClicked
+        int selectedRow = borrowsTable.getSelectedRow();
+        if (selectedRow != -1) { // Check if a row is selected
+            try {
+                // Retrieve IDs from the selected row
+                int borrowID = (int) borrowsTable.getValueAt(selectedRow, 0);
+                int bookID = (int) borrowsTable.getValueAt(selectedRow, 2);
+                int studentID = (int) borrowsTable.getValueAt(selectedRow, 1);
+
+                if (borrowID == 0 || bookID == 0 || studentID == 0) {
+                    throw new NullPointerException("One or more IDs are null.");
+                }
+
+                // Fetch details from the database
+                Borrow borrow = DatabaseAccess.getBorrowByID(borrowID);
+                Book book = DatabaseAccess.getBookByID(bookID);
+                Student student = DatabaseAccess.getStudentByID(studentID);
+
+                // Display the details in the text areas
+                borrowTextArea.setText(formatBorrowDetails(borrow));
+                borrowBookDetailsTextArea.setText(formatBookDetails(book));
+                borrowStudentDetailsTextArea.setText(formatStudentDetails(student));
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Error: One or more IDs are null. Please select a valid row.", "Error", JOptionPane.ERROR_MESSAGE);
+                
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No row selected. Please select a row.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_borrowsTableMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activeLoansCount;
     private javax.swing.JLabel activeLoansLabel;
@@ -1591,9 +1884,16 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JTextField addressField;
     private javax.swing.JTextField authorField;
     private javax.swing.JPanel bookDetailsMiniPanel;
+    private javax.swing.JTextArea bookTextArea;
     private javax.swing.JTextField bookTitleField;
     private javax.swing.JTable booksTable;
     private javax.swing.JScrollPane booksTableScrollPane;
+    private javax.swing.JTextArea borrowBookDetailsTextArea;
+    private javax.swing.JPanel borrowManagementPanel;
+    private javax.swing.JTextArea borrowStudentDetailsTextArea;
+    private javax.swing.JTextArea borrowTextArea;
+    private javax.swing.JScrollPane borrowsScrollPane;
+    private javax.swing.JTable borrowsTable;
     private javax.swing.JPanel catalogAdminBodyPanel;
     private javax.swing.JLabel catalogAdminLabel;
     private javax.swing.JPanel catalogAdminPanel;
@@ -1617,11 +1917,18 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel helpAndSupportPanel;
     private javax.swing.JPanel helpAndSupportTitlePanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel jobTitleLabel;
     private javax.swing.JPanel librarianTabPanel;
     private javax.swing.JPanel loanManagementBodyPanel;
     private javax.swing.JLabel loanManagementLabel;
     private javax.swing.JPanel loanManagementPanel;
+    private javax.swing.JTabbedPane loanManagementTabbedPane;
     private javax.swing.JLabel loanManagementTitleLabel;
     private javax.swing.JPanel loanManagementTitlePanel;
     private javax.swing.JLabel logOutLabel;
@@ -1667,11 +1974,16 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JPanel studentDetailsMiniPanel;
     private javax.swing.JTextField studentFullNameField;
     private javax.swing.JTextField studentIDField;
+    private javax.swing.JTextArea studentTextArea;
     private javax.swing.JTable studentsTable;
     private javax.swing.JScrollPane studentsTableScrollPane;
     private javax.swing.JPanel subOverviewReportPanel;
     private javax.swing.JLabel totalStudentCount;
     private javax.swing.JLabel totalStudentsLabel;
+    private javax.swing.JPanel transactionMangementPanel;
+    private javax.swing.JScrollPane transactionsScrollPane;
+    private javax.swing.JTable transactionsTable;
+    private javax.swing.JTextArea transactionsTextArea;
     private javax.swing.JPanel userAdminBodyPanel;
     private javax.swing.JLabel userAdminLabel;
     private javax.swing.JPanel userAdminPanel;
@@ -1680,8 +1992,10 @@ public class LibrarianInterface extends javax.swing.JFrame {
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel viewBooksLabel;
+    private javax.swing.JLabel viewBorrowsButton;
     private javax.swing.JLabel viewStudentsLabel;
     private javax.swing.JLabel viewTermAndConditionsLabel;
+    private javax.swing.JLabel viewTransactionsButton;
     private javax.swing.JPanel westNavPanel;
     // End of variables declaration//GEN-END:variables
     /**
@@ -1736,7 +2050,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
     // Set color effect on buttons uppon hover on panel sections
     private void dashBoardHover() {
-        JLabel[] labels = {moreDetailsLabel1, moreDetailsLabel2, moreDetailsLabel3, moreDetailsLabel4, editProfileDetailsLabel, viewTermAndConditionsLabel, addBookLabel, editBookLabel, deleteBookLabel, viewBooksLabel, deleteStudentButton, viewStudentsLabel};
+        JLabel[] labels = {moreDetailsLabel1, moreDetailsLabel2, moreDetailsLabel3, moreDetailsLabel4, editProfileDetailsLabel, viewTermAndConditionsLabel, addBookLabel, editBookLabel, deleteBookLabel, viewBooksLabel, deleteStudentButton, viewStudentsLabel, viewBorrowsButton, viewTransactionsButton};
         for (JLabel label : labels) {
             label.setOpaque(true);
             label.setBackground(new Color(153, 153, 255));
@@ -1875,5 +2189,47 @@ public class LibrarianInterface extends javax.swing.JFrame {
         }
         return librarianID;
     }
+    // Format transaction details for display
 
+    private String formatTransactionDetails(Transaction transaction) {
+        return "Transaction ID: " + transaction.getTransactionID() + "\n"
+                + "Book ID: " + transaction.getBookID() + "\n"
+                + "Student ID: " + transaction.getStudentID() + "\n"
+                + "Transaction Type: " + transaction.getTransactionType() + "\n"
+                + "Transaction Date: " + transaction.getTransactionDate();
+    }
+
+// Format book details for display
+    private String formatBookDetails(Book book) {
+        return "Book ID: " + book.getBookID() + "\n"
+                + "Title: " + book.getTitle() + "\n"
+                + "Author: " + book.getAuthor() + "\n"
+                + "Genre: " + book.getGenre() + "\n"
+                + "Publication Date: " + book.getPublicationDate() + "\n"
+                + "Status: " + book.getStatus();
+    }
+
+// Format student details for display
+    private String formatStudentDetails(Student student) {
+        return "Student ID: " + student.getStudentID() + "\n"
+                + "Full Name: " + student.getFullName() + "\n"
+                + "Username: " + student.getUserName() + "\n"
+                + "Email: " + student.getEmail() + "\n"
+                + "Address: " + student.getAddress() + "\n"
+                + "Course: " + student.getCourse() + "\n"
+                + "Year Level: " + student.getYearLevel() + "\n"
+                + "Section: " + student.getSection();
+    }
+
+    private String formatBorrowDetails(Borrow borrow) {
+        if (borrow != null) {
+            return "Borrow ID: " + borrow.getBorrowID() + "\n"
+                    + "Book ID: " + borrow.getBookID() + "\n"
+                    + "Student ID: " + borrow.getStudentID() + "\n"
+                    + "Borrow Date: " + borrow.getBorrowDate() + "\n"
+                    + "Due Date: " + borrow.getDueDate();
+        } else {
+            return "No borrow details available.";
+        }
+    }
 }

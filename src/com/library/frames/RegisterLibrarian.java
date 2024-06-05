@@ -181,8 +181,12 @@ public class RegisterLibrarian extends javax.swing.JFrame {
             }
         });
 
-        phoneNumberTextField.setText("09");
         phoneNumberTextField.setToolTipText("Phone Number");
+        phoneNumberTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneNumberTextFieldActionPerformed(evt);
+            }
+        });
 
         lastNameTextField.setForeground(new java.awt.Color(153, 153, 153));
         lastNameTextField.setText("Last Name");
@@ -407,14 +411,16 @@ public class RegisterLibrarian extends javax.swing.JFrame {
 
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         addLibrarian();
-        new LoginFrame().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_registerButtonMouseClicked
 
     private void passwordTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextFieldKeyReleased
         String currentPassword = String.valueOf(passwordTextField.getPassword());
         confirmPasswordTextField.setText(currentPassword);
     }//GEN-LAST:event_passwordTextFieldKeyReleased
+
+    private void phoneNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumberTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNumberTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
@@ -461,7 +467,7 @@ public class RegisterLibrarian extends javax.swing.JFrame {
         if (firstNameTextField.getText().isBlank() || middleNameTextField.getText().isBlank() || lastNameTextField.getText().isBlank()
                 || usernameTextField.getText().isBlank() || emailTextField.getText().isBlank()
                 || phoneNumberTextField.getText().isBlank() || jobTitleTextField.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Please fill out all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please fill out all fields.", "Registration Failed", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -470,15 +476,16 @@ public class RegisterLibrarian extends javax.swing.JFrame {
 
         // Check if passwords match
         if (!password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Passwords do not match.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Passwords do not match.", "Registration Failed", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // Validate email format (basic validation)
         if (!emailTextField.getText().contains("@")) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Registration Failed", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
 
         String url = "jdbc:mysql://localhost:3306/library catalog system";
         String username = "Jareth";
@@ -487,6 +494,8 @@ public class RegisterLibrarian extends javax.swing.JFrame {
         PreparedStatement preparedStatement = null;
 
         try {
+            String phoneNumberInput = phoneNumberTextField.getText().trim();
+            int phoneNumber = Integer.parseInt(phoneNumberInput);
             connection = DriverManager.getConnection(url, username, passwordDB);
             String insertQuery = "INSERT INTO librarians (fullName, userName, email, password, phoneNumber, jobTitle) VALUES (?, ?, ?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(insertQuery);
@@ -494,20 +503,22 @@ public class RegisterLibrarian extends javax.swing.JFrame {
             preparedStatement.setString(2, usernameTextField.getText());
             preparedStatement.setString(3, emailTextField.getText());
             preparedStatement.setString(4, encryptPassword(password));
-            preparedStatement.setString(5, phoneNumberTextField.getText());
+            preparedStatement.setString(5, phoneNumberInput);
             preparedStatement.setString(6, jobTitleTextField.getText());
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(this, "Librarian added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();
+                new LoginFrame().setVisible(true);
+        this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to add librarian.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Registration failed.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid input for phone number. Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid input for phone number. Please enter a valid number.", "Registration Failed", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Registration Failed", JOptionPane.ERROR_MESSAGE);
         } finally {
             try {
                 if (preparedStatement != null) {

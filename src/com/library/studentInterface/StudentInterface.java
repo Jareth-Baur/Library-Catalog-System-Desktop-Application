@@ -292,7 +292,7 @@ public class StudentInterface extends javax.swing.JFrame {
 
         borrowingHistoryLabel.setForeground(new java.awt.Color(240, 240, 240));
         borrowingHistoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        borrowingHistoryLabel.setText("Borrowing History");
+        borrowingHistoryLabel.setText("Browsing History");
         borrowingHistoryLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         borrowingHistoryLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         borrowingHistoryLabel.setPreferredSize(new java.awt.Dimension(45, 27));
@@ -1146,6 +1146,8 @@ public class StudentInterface extends javax.swing.JFrame {
 
         renewBooksBorroedDateLabel.setForeground(new java.awt.Color(255, 255, 255));
         renewBooksBorroedDateLabel.setText("Borrowed Date:");
+
+        borrowedBooksBorrowedDateField.setToolTipText("yyyy-mm-dd");
 
         borrowedBooksDueDateField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         borrowedBooksDueDateField.setEnabled(false);

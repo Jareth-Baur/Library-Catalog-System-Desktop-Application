@@ -530,13 +530,16 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "All fields must be filled out.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         // Validate email format (basic validation)
         if (!emailTextField.getText().contains("@")) {
             JOptionPane.showMessageDialog(this, "Please enter a valid email address.", "Input Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to update current details?", "Update Confirmation", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.NO_OPTION) {
+            return;
+        }
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 

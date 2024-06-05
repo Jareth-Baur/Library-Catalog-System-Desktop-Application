@@ -1,7 +1,9 @@
 package com.library.util;
 
 import com.library.objects.Book;
+import com.library.objects.Borrow;
 import com.library.objects.Student;
+import com.library.objects.Transaction;
 import java.sql.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -606,5 +608,188 @@ public class DatabaseAccess {
             JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public static Transaction[] getAllTransactions() {
+        ArrayList<Transaction> transactionList = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String query = "SELECT * FROM transactions";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int transactionID = resultSet.getInt("transactionID");
+                int bookID = resultSet.getInt("bookID");
+                int studentID = resultSet.getInt("studentID");
+                String transactionType = resultSet.getString("transactionType");
+                String transactionDate = resultSet.getString("transactionDate");
+
+                Transaction transaction = new Transaction(transactionID, bookID, studentID, transactionType, transactionDate);
+                transactionList.add(transaction);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+
+        // Convert ArrayList to array and return
+        return transactionList.toArray(Transaction[]::new);
+    }
+
+    public static Transaction getTransactionByID(int transactionID) {
+        Transaction transaction = null;
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String query = "SELECT * FROM transactions WHERE transactionID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, transactionID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int bookID = resultSet.getInt("bookID");
+                int studentID = resultSet.getInt("studentID");
+                String transactionType = resultSet.getString("transactionType");
+                Date transactionDate = resultSet.getDate("transactionDate");
+
+                transaction = new Transaction(transactionID, bookID, studentID, transactionType, (transactionDate + ""));
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return transaction;
+    }
+
+    public static Book getBookByID(int bookID) {
+        Book book = null;
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String query = "SELECT * FROM books WHERE bookID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, bookID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                String genre = resultSet.getString("genre");
+                String publicationDate = resultSet.getString("publicationDate");
+                String status = resultSet.getString("status");
+
+                book = new Book(bookID, title, author, genre, publicationDate, status);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return book;
+    }
+
+    public static Student getStudentByID(int studentID) {
+        Student student = null;
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String query = "SELECT * FROM students WHERE studentID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, studentID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String fullName = resultSet.getString("fullName");
+                String userName = resultSet.getString("userName");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+                String phoneNumber = resultSet.getString("phoneNumber");
+                String address = resultSet.getString("address");
+                String course = resultSet.getString("course");
+                int yearLevel = resultSet.getInt("yearLevel");
+                String section = resultSet.getString("section");
+
+                student = new Student(studentID, fullName, userName, email, password, phoneNumber, address, course, yearLevel, section);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return student;
+    }
+
+    public static Borrow[] getAllBorrows() {
+        List<Borrow> borrows = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+
+            String query = "SELECT * FROM borrows";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int borrowID = resultSet.getInt("borrowID");
+                int studentID = resultSet.getInt("studentID");
+                int bookID = resultSet.getInt("bookID");
+                String dueDate = resultSet.getString("dueDate");
+                String borrowDate = resultSet.getString("borrowDate");
+                String returnedDate = resultSet.getString("returnedDate");
+                String status = resultSet.getString("status");
+
+                Borrow borrow = new Borrow(borrowID, studentID, bookID, dueDate, borrowDate, returnedDate, status);
+                borrows.add(borrow);
+            }
+
+            statement.close();
+            resultSet.close();
+            connection.close();
+
+            Borrow[] borrowsArray = borrows.toArray(Borrow[]::new);
+            return borrowsArray;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Borrow getBorrowByID(int borrowID) {
+        Borrow borrow = null;
+        try {
+            Connection connection = DriverManager.getConnection(SQLURL, SQLUSERNAME, SQLPASSWORD);
+            String query = "SELECT * FROM borrows WHERE borrowID =?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, borrowID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("borrowID");
+                int bookId = resultSet.getInt("bookID");
+                int studentId = resultSet.getInt("studentID");
+                String dueDate = resultSet.getString("dueDate");
+                String borrowDate = resultSet.getString("borrowDate");
+                String returnedDate = resultSet.getString("returnedDate");
+                String status = resultSet.getString("status");
+
+                borrow = new Borrow(id, studentId, bookId, dueDate, borrowDate, returnedDate, status);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return borrow;
     }
 }
