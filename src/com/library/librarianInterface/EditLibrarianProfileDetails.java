@@ -60,10 +60,11 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
         setTitle("Library Catalog System -  Edit Profile Details");
         setResizable(false);
 
-        rootPanel.setBackground(new java.awt.Color(255, 153, 153));
+        rootPanel.setBackground(new java.awt.Color(34, 42, 44));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
+        phoneNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         phoneNumberLabel.setText("Phone Number:");
 
         phoneNumberTextField.setText("09");
@@ -74,6 +75,7 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             }
         });
 
+        jobTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         jobTitleLabel.setText("Job Title");
 
         jobTitleTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -83,7 +85,8 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             }
         });
 
-        cancelButton.setBackground(new java.awt.Color(255, 153, 153));
+        cancelButton.setBackground(new java.awt.Color(51, 51, 51));
+        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelButton.setText("Cancel");
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,6 +101,7 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             }
         });
 
+        fullNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         fullNameLabel.setText("Full Name:");
 
         firstNameTextField.setText("First Name");
@@ -163,6 +167,7 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             }
         });
 
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username:");
 
         usernameTextField.setText("Username");
@@ -207,9 +212,11 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
             }
         });
 
+        emailLabel.setForeground(new java.awt.Color(255, 255, 255));
         emailLabel.setText("Email:");
 
-        saveButton.setBackground(new java.awt.Color(255, 153, 153));
+        saveButton.setBackground(new java.awt.Color(51, 51, 51));
+        saveButton.setForeground(new java.awt.Color(255, 255, 255));
         saveButton.setText("Save");
         saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -291,9 +298,10 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Edit Profile Details");
 
@@ -444,8 +452,8 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonMouseEntered
 
     private void saveButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseExited
-        saveButton.setBackground(new Color(255, 153, 153));
-        saveButton.setForeground(new Color(0, 0, 0));
+        saveButton.setBackground(new Color(51, 51, 51));
+        saveButton.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_saveButtonMouseExited
 
     private void cancelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseEntered
@@ -454,8 +462,8 @@ public class EditLibrarianProfileDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonMouseEntered
 
     private void cancelButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseExited
-        cancelButton.setBackground(new Color(255, 153, 153));
-        cancelButton.setForeground(new Color(0, 0, 0));
+        cancelButton.setBackground(new Color(51, 51, 51));
+        cancelButton.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_cancelButtonMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

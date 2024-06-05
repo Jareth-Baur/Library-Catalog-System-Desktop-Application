@@ -48,11 +48,12 @@ public class EditBookDetails extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Library Catalog System - Add New Book");
 
-        rootPanel.setBackground(new java.awt.Color(153, 153, 255));
+        rootPanel.setBackground(new java.awt.Color(34, 42, 44));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        updateBookLabel.setBackground(new java.awt.Color(204, 204, 255));
+        updateBookLabel.setBackground(new java.awt.Color(51, 51, 51));
+        updateBookLabel.setForeground(new java.awt.Color(255, 255, 255));
         updateBookLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         updateBookLabel.setText("Update Book");
         updateBookLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -71,7 +72,8 @@ public class EditBookDetails extends javax.swing.JFrame {
             }
         });
 
-        cancelLabel.setBackground(new java.awt.Color(204, 204, 255));
+        cancelLabel.setBackground(new java.awt.Color(51, 51, 51));
+        cancelLabel.setForeground(new java.awt.Color(255, 255, 255));
         cancelLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cancelLabel.setText("Cancel");
         cancelLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -101,6 +103,7 @@ public class EditBookDetails extends javax.swing.JFrame {
         genreField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText(" Edit Book Details");
 
@@ -227,15 +230,17 @@ public class EditBookDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelLabelMouseEntered
 
     private void cancelLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelLabelMouseExited
-        cancelLabel.setBackground(new Color(204, 204, 255));
+        cancelLabel.setBackground(new Color(51, 51, 51));
     }//GEN-LAST:event_cancelLabelMouseExited
 
     private void updateBookLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBookLabelMouseEntered
         updateBookLabel.setBackground(new Color(102, 255, 102));
+        updateBookLabel.setForeground(new Color(51, 51, 51));
     }//GEN-LAST:event_updateBookLabelMouseEntered
 
     private void updateBookLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBookLabelMouseExited
-        updateBookLabel.setBackground(new Color(204, 204, 255));
+        updateBookLabel.setBackground(new Color(51, 51, 51));
+        updateBookLabel.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_updateBookLabelMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
